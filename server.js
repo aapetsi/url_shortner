@@ -1,6 +1,5 @@
 const express = require('express')
 const connectDB = require('./config/db')
-const urlController = require('./controllers/url/url.controller')
 
 const app = express()
 
