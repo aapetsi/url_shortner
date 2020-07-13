@@ -1,5 +1,6 @@
 const express = require('express')
 const connectDB = require('./config/db')
+const urlRouter = require('./routes/api/url')
 
 const app = express()
 
@@ -10,10 +11,7 @@ connectDB()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// Controllers
-// routes
-app.post('/createShortLink', urlController.createShortLink)
-
-app.get('/:url', urlController.openLink)
+// Routes middleware
+app.use('/api/url', urlRouter)
 
 module.exports = app

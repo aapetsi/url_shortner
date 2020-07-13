@@ -1,7 +1,11 @@
-const urlController = require('./controllers/url/url.controller')
+const express = require('express')
+const router = express.Router()
+const urlController = require('../../controllers/url/url.controller.js')
 
 // Controllers
 // routes
-app.post('/createShortLink', urlController.createShortLink)
+router.post('/createShortLink', urlController.createShortLink)
 
-app.get('/:url', urlController.openLink)
+router.get('/:url', urlController.openLink)
+
+module.exports = router
