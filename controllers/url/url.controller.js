@@ -2,6 +2,11 @@ const Url = require('../../models/Url.model')
 
 const baseUrl = process.env.BASE_URL || 'http://localhost:1234'
 
+const getUrls = async (req, res) => {
+  const urls = await Url.find()
+  return res.status(200).json(urls)
+}
+
 const createShortLink = async (req, res) => {
   const { originalUrl } = req.body
 
@@ -41,6 +46,7 @@ const openLink = async (req, res) => {
 }
 
 module.exports = {
+  getUrls,
   createShortLink,
   openLink,
 }

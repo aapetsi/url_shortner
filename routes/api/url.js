@@ -6,6 +6,8 @@ const urlController = require('../../controllers/url/url.controller.js')
 // routes
 router.post('/createShortLink', urlController.createShortLink)
 
-router.get('/:url', urlController.openLink)
+router.get('/get_urls', urlController.getUrls)
+
+// router.get('/:url', urlController.openLink)
 
 module.exports = router

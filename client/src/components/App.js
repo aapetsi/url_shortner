@@ -6,7 +6,16 @@ import UrlForm from './UrlForm'
 const App = () => {
   const [urls, setUrls] = useState([])
 
-  useEffect(() => {}, [urls])
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/api/url/get_urls')
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }, [urls])
   return (
     <div>
       <h1>URL Shortener</h1>
