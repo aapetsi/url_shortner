@@ -1,9 +1,10 @@
 import React from 'react'
+import Url from './Url'
 
 const UrlList = () => {
   return (
     <div>
-      <p>all urls</p>
+      <Url />
     </div>
   )
 }
