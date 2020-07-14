@@ -11,9 +11,15 @@ const createShortLink = async (req, res) => {
     if (existingUrl) {
       return res.status(400).json({ error: 'Url has already been saved' })
     } else {
-      /*
-      implement url shortening here and save to database
-      */
+      // Shorten and save url to database
+      const shortenedLink = new Url({
+        originalUrl,
+      })
+      shortenedLink.shortUrl = shortenedLink.id.slice(13, 21)
+
+      const savedLink = await shortenedLink.save()
+
+      res.status(201).json(savedLink)
     }
   } catch (error) {
     return res.status(500).json({ message: error.message })
