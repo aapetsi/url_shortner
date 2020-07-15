@@ -5,7 +5,10 @@ const Url = (props) => {
 
   return (
     <div>
-      <p>{shortUrl}</p>
+      <span>{shortUrl}</span>
+
+      {/* <button>Edit</button>
+      <button>Delete</button> */}
     </div>
   )
 }

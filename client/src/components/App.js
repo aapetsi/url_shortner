@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import UrlList from './UrlList'
 import UrlForm from './UrlForm'
+import '../styles/App.css'
 
 const App = () => {
   const [urls, setUrls] = useState([])
@@ -28,7 +29,7 @@ const App = () => {
       })
   }, [])
   return (
-    <div>
+    <div className='container'>
       <h1>URL Shortener</h1>
       <UrlForm shortenUrl={shortenUrl} />
       <UrlList urls={urls} />

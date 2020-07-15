@@ -1,5 +1,6 @@
 import React from 'react'
 import Url from './Url'
+import '../styles/UrlList.css'
 
 const UrlList = (props) => {
   const { urls } = props

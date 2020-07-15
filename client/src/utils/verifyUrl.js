@@ -1,3 +1,3 @@
-const verifyUrl = (url) => {
-  return 'hello'
-}
+const verifyUrl = (url) => {}
+
+export default verifyUrl
