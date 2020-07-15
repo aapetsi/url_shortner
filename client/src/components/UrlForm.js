@@ -12,11 +12,19 @@ const UrlForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     shortenUrl(text)
+    setText('')
   }
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type='text' required={true} onChange={handleChange} name='url' />
+        <input
+          type='text'
+          required={true}
+          onChange={handleChange}
+          name='url'
+          placeholder='https://example.com'
+          value={text}
+        />
         <button>Shorten</button>
       </form>
     </div>
