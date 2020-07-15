@@ -6,6 +6,11 @@ const UrlSchema = new mongoose.Schema({
   },
   shortUrl: {
     type: String,
+    required: true,
+  },
+  shortUrlHash: {
+    type: String,
+    required: true,
   },
   dateCreated: {
     type: Date,

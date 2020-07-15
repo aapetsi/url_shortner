@@ -1,4 +1,5 @@
 const Url = require('../../models/Url.model')
+const { v4: uuidv4 } = require('uuid')
 
 const baseUrl = process.env.BASE_URL || 'http://localhost:1234'
 
@@ -17,13 +18,12 @@ const createShortLink = async (req, res) => {
       return res.status(400).json({ error: 'Url has already been saved' })
     } else {
       // Shorten and save url to database
+      const hash = uuidv4().split('-')[4].slice(0, 8)
+      console.log(hash)
       const shortenedLink = new Url({
         originalUrl,
+        shortUrl: `https://pbid.io/${hash}`,
       })
-      shortenedLink.shortUrl = `https://pbid.io/${shortenedLink.id.slice(
-        13,
-        21
-      )}`
 
       const savedLink = await shortenedLink.save()
 
