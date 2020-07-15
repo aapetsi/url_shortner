@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Url = () => {
+const Url = (props) => {
+  const { id, originalUrl, shortUrl } = props
+  console.log(props)
   return (
     <div>
-      <p>Single url</p>
+      <p>https://pbid.io/{shortUrl}</p>
     </div>
   )
 }

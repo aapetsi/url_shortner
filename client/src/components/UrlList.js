@@ -6,7 +6,12 @@ const UrlList = (props) => {
   return (
     <div>
       {urls.map((url) => (
-        <Url key={url._id} shortUrl={url.shortUrl} />
+        <Url
+          key={url._id}
+          shortUrl={url.shortUrl}
+          id={url._id}
+          originalUrl={url.originalUrl}
+        />
       ))}
     </div>
   )
