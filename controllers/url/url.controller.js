@@ -23,6 +23,7 @@ const createShortLink = async (req, res) => {
       const shortenedLink = new Url({
         originalUrl,
         shortUrl: `https://pbid.io/${hash}`,
+        shortUrlHash: hash,
       })
 
       const savedLink = await shortenedLink.save()
