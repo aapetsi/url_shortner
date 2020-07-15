@@ -6,20 +6,32 @@ import UrlForm from './UrlForm'
 const App = () => {
   const [urls, setUrls] = useState([])
 
+  const shortenUrl = (originalUrl) => {
+    axios
+      .post('http://localhost:3000/api/url/createShortLink', { originalUrl })
+      .then((res) => {
+        setUrls([...urls, res.data])
+      })
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/api/url/get_urls')
       .then((res) => {
+        setUrls([...urls, ...res.data])
         console.log(res.data)
       })
       .catch((err) => {
         console.error(err.message)
       })
-  }, [urls])
+  }, [])
   return (
     <div>
       <h1>URL Shortener</h1>
-      <UrlForm />
+      <UrlForm shortenUrl={shortenUrl} />
       <UrlList urls={urls} />
     </div>
   )

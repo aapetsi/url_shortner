@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-const UrlForm = () => {
+const UrlForm = (props) => {
   const [text, setText] = useState('')
+  const { shortenUrl } = props
 
   const handleChange = (e) => {
     setText(e.target.value)
@@ -9,7 +10,7 @@ const UrlForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(text)
+    shortenUrl(text)
   }
   return (
     <div>
