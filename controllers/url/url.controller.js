@@ -20,7 +20,10 @@ const createShortLink = async (req, res) => {
       const shortenedLink = new Url({
         originalUrl,
       })
-      shortenedLink.shortUrl = shortenedLink.id.slice(13, 21)
+      shortenedLink.shortUrl = `https://pbid.io/${shortenedLink.id.slice(
+        13,
+        21
+      )}`
 
       const savedLink = await shortenedLink.save()
 

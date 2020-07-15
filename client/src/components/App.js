@@ -22,7 +22,6 @@ const App = () => {
       .get('http://localhost:3000/api/url/get_urls')
       .then((res) => {
         setUrls([...urls, ...res.data])
-        console.log(res.data)
       })
       .catch((err) => {
         console.error(err.message)
