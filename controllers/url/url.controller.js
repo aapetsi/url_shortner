@@ -19,7 +19,6 @@ const createShortLink = async (req, res) => {
     } else {
       // Shorten and save url to database
       const hash = uuidv4().split('-')[4].slice(0, 8)
-      console.log(hash)
       const shortenedLink = new Url({
         originalUrl,
         shortUrl: `https://pbid.io/${hash}`,
