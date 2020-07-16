@@ -7,7 +7,7 @@ import '../styles/App.css'
 const App = () => {
   const [urls, setUrls] = useState([])
 
-  const shortenUrl = (originalUrl) => {
+  const shortenUrl = (originalUrl: string) => {
     axios
       .post('http://localhost:3000/api/url/createShortLink', { originalUrl })
       .then((res) => {
