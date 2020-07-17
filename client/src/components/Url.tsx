@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {FunctionComponent} from 'react'
 import Axios from 'axios'
 
-const Url = (props) => {
-  const { id, originalUrl, shortUrl, shortUrlHash } = props
+type UrlProps = {
+  key: string,
+  shortUrl: string,
+  id: string,
+  originalUrl: string,
+  shortUrlHash: string
+}
+
+const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHash, key}) => {
 
   const handleOpenLink = () => {
     window.open(originalUrl, '_blank')
@@ -13,14 +20,9 @@ const Url = (props) => {
       <p
         className='link'
         onClick={handleOpenLink}
-        href={originalUrl}
-        target='_blank'
       >
         {shortUrl}
       </p>
-
-      {/* <button>Edit</button>
-      <button>Delete</button> */}
     </div>
   )
 }

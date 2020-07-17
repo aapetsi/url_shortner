@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import Url from './Url'
 import '../styles/UrlList.css'
 
-const UrlList = (props) => {
-  const { urls } = props
+
+
+interface UrlListProps {
+  urls :  {
+    _id: string,
+    shortUrl: string,
+    originalUrl: string,
+    shortUrlHash: string
+  }[]
+}
+
+const UrlList : FunctionComponent<UrlListProps> = ({urls}) => {
   return (
     <div>
       {urls.length === 0 ? (

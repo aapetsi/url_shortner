@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, FunctionComponent, FormEvent, SyntheticEvent } from 'react'
 import '../styles/UrlForm.css'
 
-const UrlForm = (props) => {
-  const [text, setText] = useState('')
-  const { shortenUrl } = props
+type UrlFormProps = {
+  shortenUrl: (url: string) => void
+}
 
-  const handleChange = (e) => {
-    setText(e.target.value)
+const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
+  const [text, setText] = useState('')
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setText(e.currentTarget.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     shortenUrl(text)
     setText('')
