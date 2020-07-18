@@ -1,6 +1,6 @@
 import React from 'react'
 import UrlList, {UrlListProps} from '../../components/UrlList'
-import {render, screen} from '@testing-library/react'
+import {render} from '@testing-library/react'
 
 
 function renderUrlList(props: Partial<UrlListProps> = {}) {
@@ -27,7 +27,7 @@ describe('<UrlList />', () => {
 
     const {findByTestId} = renderUrlList({urls})
     const urlsAll = await findByTestId('urls-all')
-    screen.debug()
+    
     expect(urlsAll).toBeInTheDocument()
     expect(urlsAll.innerHTML).toBe("Here are your shortened urls")
   })
