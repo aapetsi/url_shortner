@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Axios, {AxiosResponse} from 'axios'
+import Axios from 'axios'
 import UrlList from './UrlList'
 import UrlForm from './UrlForm'
 import '../styles/App.css'
@@ -28,6 +28,7 @@ const App = () => {
         console.error(err.message)
       })
   }, [])
+  
   return (
     <div className='container'>
       <h1>URL Shortener</h1>
