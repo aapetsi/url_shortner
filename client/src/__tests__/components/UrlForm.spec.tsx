@@ -1,6 +1,6 @@
 import React from 'react'
 import UrlForm, {UrlFormProps} from '../../components/UrlForm'
-import {render, fireEvent, screen, findByTestId} from '@testing-library/react'
+import {render, fireEvent} from '@testing-library/react'
 
 function renderForm(props: Partial<UrlFormProps> = {}) {
   const defaultProps: UrlFormProps = {
@@ -38,8 +38,6 @@ describe('<UrlForm />', () => {
     fireEvent.change(url, {target: {value: 'https://google.com'}})
 
     fireEvent.submit(url)
-
-    screen.debug()
     
     expect(handleSubmit).toHaveBeenCalled()
     expect(handleSubmit).toHaveBeenCalledWith("https://google.com")

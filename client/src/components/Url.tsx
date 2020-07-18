@@ -2,24 +2,24 @@ import React, {FunctionComponent} from 'react'
 import Axios from 'axios'
 
 export type UrlProps =  {
-  key: string,
   shortUrl: string,
   id: string,
   originalUrl: string,
   shortUrlHash: string
 }
 
-const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHash, key}) => {
+const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHash}) => {
 
   const handleOpenLink = () => {
     window.open(originalUrl, '_blank')
   }
 
   return (
-    <div data-testid="url">
+    <div data-testid="url-container">
       <p
         className='link'
         onClick={handleOpenLink}
+        data-testid="url-short"
       >
         {shortUrl}
       </p>

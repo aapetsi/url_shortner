@@ -2,9 +2,7 @@ import React, { FunctionComponent } from 'react'
 import Url from './Url'
 import '../styles/UrlList.css'
 
-
-
-interface UrlListProps {
+export type UrlListProps = {
   urls :  {
     _id: string,
     shortUrl: string,
@@ -17,9 +15,9 @@ const UrlList : FunctionComponent<UrlListProps> = ({urls}) => {
   return (
     <div>
       {urls.length === 0 ? (
-        <p>Start shortening your urls</p>
+        <p data-testid="no-urls">Start shortening your urls</p>
       ) : (
-        <p>Here are your shortened urls</p>
+        <p data-testid='urls-all'>Here are your shortened urls</p>
       )}
       {urls.map((url) => (
         <Url
