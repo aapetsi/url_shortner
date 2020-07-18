@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react'
 import Axios from 'axios'
 
-type UrlProps = {
+export type UrlProps =  {
   key: string,
   shortUrl: string,
   id: string,
@@ -16,7 +16,7 @@ const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHa
   }
 
   return (
-    <div>
+    <div data-testid="url">
       <p
         className='link'
         onClick={handleOpenLink}

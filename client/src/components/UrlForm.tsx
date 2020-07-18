@@ -1,7 +1,7 @@
 import React, { useState, FunctionComponent, FormEvent, SyntheticEvent } from 'react'
-import '../styles/UrlForm.css'
+// import '../styles/UrlForm.css'
 
-type UrlFormProps = {
+export type UrlFormProps = {
   shortenUrl: (url: string) => void
 }
 
@@ -19,12 +19,12 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="url-form">
         <input
           type='text'
           required={true}
           onChange={handleChange}
-          name='url'
+          name='text'
           placeholder='https://example.com'
           value={text}
         />
