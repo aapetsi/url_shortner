@@ -18,7 +18,7 @@ const App = () => {
       })
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     Axios
       .get('http://localhost:3000/api/url/get_urls')
       .then((res) => {
