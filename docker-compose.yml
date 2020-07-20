@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  webapp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myapp-server-img
+    container_name: myapp-node-express
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    env_file: .env
+    environment:
+      - MONGO_HOSTNAME=$MONGO_HOSTNAME
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+  mongo:
+    image: mongo
+    container_name: myapp-mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+  client:
+    build:
+      context: './client'
+      dockerfile: Dockerfile
+    image: myapp-client
+    container_name: myapp-react-client
+    command: npm start
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "1234:1234"
+    networks:
+      - app-network
+  
+networks:
+  app-network:
+    driver: bridge
+  
+volumes:
+  data-volume:
+  node_modules:
+  web-root:
+    driver: local
