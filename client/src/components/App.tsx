@@ -14,6 +14,7 @@ const App = () => {
         setUrls([...urls, res.data])
       })
       .catch((err) => {
+        alert('There was a problem saving your URL to the database. Check your connection and try again')
         console.error(err.message)
       })
   }
@@ -25,6 +26,7 @@ const App = () => {
         setUrls([...urls, ...res.data])
       })
       .catch((err) => {
+        alert('Oops there seems to be a problem with the network.\n Check your connection and try again')
         console.error(err.message)
       })
   }, [])
