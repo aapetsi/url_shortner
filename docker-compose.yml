@@ -26,22 +26,22 @@ services:
       - "27017:27017"
     networks:
       - app-network
-  client:
-    build:
-      context: './client'
-      dockerfile: Dockerfile
-    image: myapp-client
-    container_name: myapp-react-client
-    command: npm start
-    volumes:
-      - ./client/:/usr/app
-      - /usr/app/node_modules
-    depends_on:
-      - server
-    ports:
-      - "1234:1234"
-    networks:
-      - app-network
+  # client:
+  #   build:
+  #     context: './client'
+  #     dockerfile: Dockerfile
+  #   image: myapp-client
+  #   container_name: myapp-react-client
+  #   command: npm start
+  #   volumes:
+  #     - ./client/:/usr/app
+  #     - /usr/app/node_modules
+  #   depends_on:
+  #     - server
+  #   ports:
+  #     - "1234:1234"
+  #   networks:
+  #     - app-network
   
 networks:
   app-network:
