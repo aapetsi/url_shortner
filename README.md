@@ -1,6 +1,6 @@
 # URL SHORTNER
 
-A fullstack app for shortnening urls
+A fullstack app for shortnening urls. This app was built using the _MERN (MongoDB, ExpressJs, ReactJs and NodeJs)_ stack
 
 ##### TO RUN THE FULLSTACK APP
 
