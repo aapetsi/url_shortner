@@ -38,22 +38,7 @@ const createShortLink = async (req, res) => {
   }
 }
 
-const openLink = async (req, res) => {
-  const { shortUrlHash } = req.params
-  try {
-    const foundUrl = await Url.findOne({ shortUrlHash })
-    if (!foundUrl) {
-      return res.status(404).json({ message: 'Url not found' })
-    } else {
-      return res.redirect(foundUrl.originalUrl)
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message })
-  }
-}
-
 module.exports = {
   getUrls,
   createShortLink,
-  openLink,
 }

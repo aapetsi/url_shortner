@@ -8,6 +8,4 @@ router.post('/createShortLink', urlController.createShortLink)
 
 router.get('/get_urls', urlController.getUrls)
 
-router.get('/short_url/:url', urlController.openLink)
-
 module.exports = router

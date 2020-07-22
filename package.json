@@ -10,7 +10,7 @@
     "client:build": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll --verbose --runInBand --detectOpenHandles"
+    "test:watch": "cross-env NODE_ENV=test jest --coverage --watchAll --verbose --runInBand --detectOpenHandles"
   },
   "author": "Apetsi Ampiah",
   "license": "ISC",
@@ -32,8 +32,10 @@
     "supertest": "^4.0.2"
   },
   "jest": {
+    "collectCoverage": true,
     "coverageReporters": [
-      "json"
+      "json",
+      "html"
     ],
     "testEnvironment": "node",
     "modulePathIgnorePatterns": ["<rootDir>/client"]
