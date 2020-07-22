@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
-const { MONGO_HOSTNAME, MONGO_DB, MONGO_PORT } = process.env //.MONGO_URI || 'mongodb://localhost:27017/shortner'
+const { MONGO_HOSTNAME, MONGO_DB, MONGO_DB_TEST, MONGO_PORT } = process.env
 
 const connectDB = async () => {
   try {
     const dbConnectionUrl = {
-      localUrl: `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`,
+      localUrl: `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${
+        MONGO_DB ? MONGO_DB : MONGO_DB_TEST
+      }`,
     }
     await mongoose.connect(dbConnectionUrl.localUrl, {
       useNewUrlParser: true,

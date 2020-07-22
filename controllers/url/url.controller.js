@@ -11,6 +11,10 @@ const getUrls = async (req, res) => {
 const createShortLink = async (req, res) => {
   const { originalUrl } = req.body
 
+  if (!originalUrl) {
+    return res.status(400).json({ message: 'Please provide a valid url' })
+  }
+
   try {
     // check if url has already been saved
     const existingUrl = await Url.findOne({ originalUrl })
