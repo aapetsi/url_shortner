@@ -19,19 +19,10 @@ const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHa
       <td>
         {originalUrl}
       </td>
-      <td>
+      <td data-testid="url-short">
         {shortUrl}
       </td>
     </tr>
-    // <div data-testid="url-container">
-    //   <p
-    //     className='link'
-    //     onClick={handleOpenLink}
-    //     data-testid="url-short"
-    //   >
-    //     {shortUrl}
-    //   </p>
-    // </div>
   )
 }
 

@@ -6,7 +6,8 @@ export type UrlFormProps = {
 }
 
 const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
-  const [text, setText] = useState('')
+  const [text, setText] = useState<string>('')
+  const [error, setError] = useState<string>('')
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setText(e.currentTarget.value)
@@ -17,8 +18,9 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
     if (text.slice(0,4) === 'http') {
       shortenUrl(text)
       setText('')
+      setError('')
     } else {
-      alert('Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"')
+      setError('Make sure your url is of the form "https://somewebsite.com"')
       setText('')
     }
   }
@@ -37,6 +39,7 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
         />
         <button data-testid="submit">Shorten</button>
       </form>
+      {error && <p data-testid="error-text">{error}</p>}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import UrlForm, {UrlFormProps} from '../../components/UrlForm'
-import {render, fireEvent} from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react'
 
 function renderForm(props: Partial<UrlFormProps> = {}) {
   const defaultProps: UrlFormProps = {
@@ -42,4 +42,17 @@ describe('<UrlForm />', () => {
     expect(handleSubmit).toHaveBeenCalled()
     expect(handleSubmit).toHaveBeenCalledWith("https://google.com")
   })
+
+  test('should display error with wrong url type', async () => {
+    const {findByTestId} = renderForm()
+    const url = await findByTestId('url')
+    
+    fireEvent.change(url, {target: {value: 'test'}})
+    fireEvent.submit(url)
+
+    const errorText = await findByTestId('error-text')
+
+    expect(errorText.innerHTML).toBe('Make sure your url is of the form "https://somewebsite.com"')
+  })
+  
 })

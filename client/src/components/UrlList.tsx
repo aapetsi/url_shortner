@@ -8,17 +8,16 @@ export type UrlListProps = {
     shortUrl: string,
     originalUrl: string,
     shortUrlHash: string
-  }[]
+  }[],
+  error: string
 }
 
-const UrlList : FunctionComponent<UrlListProps> = ({urls}) => {
+const UrlList : FunctionComponent<UrlListProps> = ({urls, error}) => {
   return (
     <div>
-      {urls.length === 0 ? (
-        <p data-testid="no-urls">Start shortening your urls</p>
-      ) : (
-        <p data-testid='urls-all'>Here are your shortened urls</p>
-      )}
+      {urls.length === 0 ? <p data-testid="no-urls">Start shortening your urls</p> : <p data-testid="urls-all">Here are your shortened urls</p>}
+      {error !== '' && <p data-testid="error">{error}</p>}
+     
       <table>
         <thead>
           <tr>
@@ -29,11 +28,11 @@ const UrlList : FunctionComponent<UrlListProps> = ({urls}) => {
         <tbody>
           {urls.map((url) => (
             <Url
-              key={url._id}
-              shortUrl={url.shortUrl}
-              id={url._id}
-              originalUrl={url.originalUrl}
-              shortUrlHash={url.shortUrlHash}
+            key={url._id}
+            shortUrl={url.shortUrl}
+            id={url._id}
+            originalUrl={url.originalUrl}
+            shortUrlHash={url.shortUrlHash}
             />
           ))}
         </tbody>

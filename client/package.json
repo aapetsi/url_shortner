@@ -7,7 +7,7 @@
     "start": "parcel public/index.html",
     "build": "parcel build public/index.html --out-dir build",
     "test": "jest",
-    "test:watch": "jest --watch --coverage"
+    "test:watch": "jest --watch --coverage --verbose"
   },
   "author": "Apetsi Ampiah",
   "license": "ISC",
