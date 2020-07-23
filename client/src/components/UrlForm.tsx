@@ -33,7 +33,7 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
           required={true}
           onChange={handleChange}
           name='text'
-          placeholder='https://example.com or www.example.com'
+          placeholder='https://example.com'
           value={text}
           data-testid='url'
         />
