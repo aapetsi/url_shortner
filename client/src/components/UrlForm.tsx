@@ -14,8 +14,12 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
 
   const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    shortenUrl(text)
-    setText('')
+    if (text.slice(0,4) === 'http') {
+      shortenUrl(text)
+      setText('')
+    } else {
+      alert('Make sure your url is of the form "https://somewebsite.com"')
+    }
   }
   
   return (

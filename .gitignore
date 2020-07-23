@@ -4,3 +4,6 @@ specs.md
 server/.env
 npm-debug.log
 coverage
+.cache
+build
+
