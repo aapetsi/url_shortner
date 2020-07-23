@@ -11,7 +11,7 @@ const connectDB = async () => {
         MONGO_DB ? MONGO_DB : MONGO_DB_TEST
       }`,
     }
-    await mongoose.connect(mongoUrl, {
+    await mongoose.connect(dbConnectionUrl.localUrl, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: true,

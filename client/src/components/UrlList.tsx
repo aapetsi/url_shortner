@@ -19,15 +19,25 @@ const UrlList : FunctionComponent<UrlListProps> = ({urls}) => {
       ) : (
         <p data-testid='urls-all'>Here are your shortened urls</p>
       )}
-      {urls.map((url) => (
-        <Url
-          key={url._id}
-          shortUrl={url.shortUrl}
-          id={url._id}
-          originalUrl={url.originalUrl}
-          shortUrlHash={url.shortUrlHash}
-        />
-      ))}
+      <table>
+        <thead>
+          <tr>
+            <td>Original Url</td>
+            <td>Shortened Url</td>
+          </tr>
+        </thead>
+        <tbody>
+          {urls.map((url) => (
+            <Url
+              key={url._id}
+              shortUrl={url.shortUrl}
+              id={url._id}
+              originalUrl={url.originalUrl}
+              shortUrlHash={url.shortUrlHash}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

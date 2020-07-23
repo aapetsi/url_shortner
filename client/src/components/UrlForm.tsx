@@ -18,7 +18,7 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
       shortenUrl(text)
       setText('')
     } else {
-      alert('Make sure your url is of the form "https://somewebsite.com"')
+      alert('Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"')
       setText('')
     }
   }

@@ -12,5 +12,22 @@
   text-decoration: underline;
   cursor: pointer;
   margin: 0 auto;
-  padding: 8px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 32px;
+}
+
+table {
+  margin: 0 auto;
+  width: 60%;
+}
+
+thead {
+  background-color: blue;
+  color: white;
+  height: 32px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
