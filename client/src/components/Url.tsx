@@ -1,5 +1,4 @@
-import React, {FunctionComponent} from 'react'
-import Axios from 'axios'
+import React, {FunctionComponent, } from 'react'
 
 export type UrlProps =  {
   shortUrl: string,
@@ -8,14 +7,14 @@ export type UrlProps =  {
   shortUrlHash: string
 }
 
-const Url: FunctionComponent<UrlProps> = ({id, originalUrl, shortUrl, shortUrlHash}) => {
+const Url: FunctionComponent<UrlProps> = ({ originalUrl, shortUrl }) => {
 
   const handleOpenLink = () => {
     window.open(originalUrl, '_blank')
   }
 
   return (
-    <tr className="link">
+      <tr className="link">
       <td>
         {originalUrl}
       </td>
