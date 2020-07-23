@@ -44,7 +44,7 @@ const App = () => {
   
   return (
     <div className='container'>
-      <h1>URL Shortener</h1>
+      <h1 data-testid="title">URL Shortener</h1>
       <UrlForm shortenUrl={shortenUrl} />
       <UrlList urls={urls} error={error} />
     </div>

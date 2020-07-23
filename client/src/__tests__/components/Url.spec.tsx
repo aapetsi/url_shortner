@@ -3,20 +3,21 @@ import Url, {UrlProps} from '../../components/Url'
 import {render} from '@testing-library/react'
 
 function renderUrl(props: Partial<UrlProps> = {}) {
+  const tableRow : HTMLTableRowElement = document.createElement('tr')
   const defaultProps: UrlProps = {
     shortUrl: '',
     id: '',
     originalUrl: '',
     shortUrlHash: ''
   }
-  return render(<Url {...defaultProps} {...props} />)
+  return render(<Url {...defaultProps} {...props} />, {container: document.body.appendChild(tableRow)})
 }
 
 describe('<Url />', () => {
   test('should display short url', async () => {
-    const {findByTestId} = renderUrl({shortUrl: 'test', originalUrl: 'test', id: 'test', shortUrlHash: 'test'})
+    const {findByTestId, container} = renderUrl({shortUrl: 'test', originalUrl: 'test', id: 'test', shortUrlHash: 'test'})
     const shortUrl = await findByTestId('url-short')
-
+    
     expect(shortUrl).toBeInTheDocument()
   })
 
