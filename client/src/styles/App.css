@@ -31,3 +31,9 @@ thead {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+@media only screen and (max-width: 540px) {
+  table {
+    width: 90%;
+  }
+}

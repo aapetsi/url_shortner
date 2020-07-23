@@ -24,3 +24,23 @@ button {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+@media only screen and (max-width: 540px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+  }
+
+  input {
+    width: 70%;
+  }
+
+  button {
+    width: 73%;
+    margin-top: 15px;
+  }
+}
