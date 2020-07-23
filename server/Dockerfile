@@ -1,5 +1,5 @@
 # Specify a base image
-FROM node:alpine
+FROM node:12-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -8,7 +8,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy package.json to container
-COPY package*.json .
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install

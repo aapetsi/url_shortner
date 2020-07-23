@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const { MONGO_HOSTNAME, MONGO_DB, MONGO_DB_TEST, MONGO_PORT } = process.env
 
+const mongoUrl = 'mongodb://mongo:27017/url_shortner'
 const connectDB = async () => {
   try {
     const dbConnectionUrl = {
@@ -10,7 +11,7 @@ const connectDB = async () => {
         MONGO_DB ? MONGO_DB : MONGO_DB_TEST
       }`,
     }
-    await mongoose.connect(dbConnectionUrl.localUrl, {
+    await mongoose.connect(mongoUrl, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: true,

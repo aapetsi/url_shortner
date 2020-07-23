@@ -47,4 +47,7 @@ To run a production build for the frontend app:
 
 #### RUNNING THE APP WITH DOCKER
 
+To spin up a development docker container run:
+`docker-compose up --build`
+
 #### NOTE: YOU NEED TO HAVE DOCKER INSTALLED ON YOUR SYSTEM

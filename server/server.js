@@ -22,12 +22,12 @@ app.use(cors())
 app.use('/api/url', urlRouter)
 
 // send frontend react app
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-})
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+// })
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'))
-})
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(buildPath, 'index.html'))
+// })
 
 module.exports = app
