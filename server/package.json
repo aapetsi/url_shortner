@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
+    "start": "node ./build/index.js",
+    "server": "nodemon ./build/index.js",
     "client": "npm start --prefix client",
     "client:build": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "cross-env NODE_ENV=test jest --coverage --watchAll --verbose --runInBand --detectOpenHandles"
+    "test:watch": "cross-env NODE_ENV=test jest --coverage --watchAll --verbose --runInBand --detectOpenHandles",
+    "build": "tsc"
   },
   "author": "Apetsi Ampiah",
   "license": "ISC",
@@ -30,7 +31,8 @@
     "@types/node": "^14.0.24",
     "jest": "^26.1.0",
     "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "ts-node": "^8.10.2"
   },
   "jest": {
     "collectCoverage": true,
