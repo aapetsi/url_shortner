@@ -17,7 +17,7 @@ exports[`<App /> should render App 1`] = `
         <input
           data-testid="url"
           name="text"
-          placeholder="https://example.com or www.example.com"
+          placeholder="https://example.com"
           required=""
           type="text"
           value=""
