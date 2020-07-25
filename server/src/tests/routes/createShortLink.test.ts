@@ -12,6 +12,7 @@ beforeAll(async () => {
   try {
     await clearDB()
   } catch (error) {
+    // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
   }
 })
@@ -20,6 +21,7 @@ afterEach(async () => {
   try {
     await clearDB()
   } catch (error) {
+    // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
   }
 })
