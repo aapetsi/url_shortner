@@ -49,11 +49,20 @@ exports[`<App /> should render App 1`] = `
             <td>
               Shortened Url
             </td>
+            <td>
+              Action
+            </td>
           </tr>
         </thead>
         <tbody />
       </table>
     </div>
+    <button
+      class="delete-all"
+      disabled=""
+    >
+      Delete all
+    </button>
   </div>
 </DocumentFragment>
 `;

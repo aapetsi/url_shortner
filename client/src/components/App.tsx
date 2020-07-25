@@ -47,17 +47,7 @@ const App = () => {
     }
   }
 
-  const fetchUrls = async () : Promise<void> => {
-    const res = await Axios.get('http://localhost:3000/api/url/get_urls')
-    if (res.status === 200 || res.statusText === '  OK') {
-      setUrls([...urls, res.data])
-    } else {
-      setError('Oops there seems to be a problem with the network.\n Check your connection and try again')
-    }
-  }
-
   useEffect(() => { 
-    // const res = fetchUrls()
     Axios
       .get('http://localhost:3000/api/url/get_urls')
       .then((res) => {
@@ -74,7 +64,7 @@ const App = () => {
       <h1 data-testid="title">URL Shortener</h1>
       <UrlForm shortenUrl={shortenUrl} />
       <UrlList urls={urls} error={error} handleDelete={handleDelete}/>
-      <button className='delete-all' onClick={handleDeleteAll}>Delete all</button>
+      <button disabled={urls.length === 0} className='delete-all' onClick={handleDeleteAll}>Delete all</button>
     </div>
   )
 }
