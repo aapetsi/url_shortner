@@ -4,5 +4,11 @@ import {Logger} from '@overnightjs/logger'
 
 @Controller('api')
 export class UrlController {
-  
+  @Post(':msg')
+  private postUrl(req: Request, res: Response) {
+    Logger.Info(req.params.msg)
+    return res.status(200).json({
+      message: 'running'
+    })
+  }
 }

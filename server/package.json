@@ -4,7 +4,7 @@
   "description": "Backend API for Url Shortener app",
   "main": "build/index.js",
   "scripts": {
-    "start": "node ./build/index.js",
+    "start": "npm run build && node build/index.js",
     "start:dev": "nodemon --config \"./util/nodemon.json\"",
     "server": "nodemon ./build/index.js",
     "client": "npm start --prefix client",
@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --coverage --watchAll --verbose --runInBand --detectOpenHandles",
-    "build": "tsc"
+    "build": "rm -rf ./build/ && tsc"
   },
   "author": "Apetsi Ampiah",
   "license": "ISC",
