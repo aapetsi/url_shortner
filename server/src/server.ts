@@ -1,8 +1,9 @@
-const express = require('express')
-const path = require('path')
-const cors = require('cors')
-const connectDB = require('./src/config/db')
-const urlRouter = require('./src/routes/api/url')
+import express from 'express'
+import path from 'path'
+import cors from 'cors'
+import urlRouter from './routes/api/url'
+
+import connectDB from './config/db'
 const buildPath = path.join(__dirname, 'client', 'build')
 
 const app = express()
@@ -30,4 +31,4 @@ app.use('/api/url', urlRouter)
 //   res.sendFile(path.join(buildPath, 'index.html'))
 // })
 
-module.exports = app
+export default app

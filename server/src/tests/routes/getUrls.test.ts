@@ -1,6 +1,6 @@
-const request = require('supertest')
-const server = require('../../server')
-const Url = require('../../models/Url.model')
+import request from 'supertest'
+import server from'../../server'
+import Url from'../../models/Url.model'
 
 const api = '/api/url/get_urls'
 

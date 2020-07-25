@@ -1,7 +1,7 @@
-const request = require('supertest')
-const server = require('../../server')
-const mongoose = require('mongoose')
-const Url = require('../../models/Url.model')
+import request from 'supertest'
+import mongoose from 'mongoose'
+import Url from '../../models/Url.model'
+import server from '../../server'
 
 const api = '/api/url/createShortLink'
 const clearDB = async () => {
