@@ -8,7 +8,7 @@ router.post('/createShortLink', createShortLink)
 
 router.get('/get_urls', getUrls)
 
-router.delete('/one/:shortUrl', deleteLink)
+router.delete('/one/:id', deleteLink)
 
 router.delete('/all', deleteAll)
 

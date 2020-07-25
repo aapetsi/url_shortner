@@ -30,14 +30,21 @@ const App = () => {
       .catch(err => {
         setError('There was a problem deleting all urls')
       })
-    } else {
-      return
     }
-    
   }
 
-  const handleDelete = (shortUrl : string) : void => {
-    alert(shortUrl)
+  const handleDelete = (id : string) : void => {
+    const ans = confirm('Are you sure you want to delete this url')
+    if (ans) {
+      Axios.delete(`http://localhost:3000/api/url/one/${id}`, { data: '' })
+        .then(res => {
+          let updatedUrls = urls.filter(url => url._id !== id)
+          setUrls([...updatedUrls])
+        })
+        .catch(err => {
+          setError('There was a problem deleting the url')
+        })
+    }
   }
 
   const fetchUrls = async () : Promise<void> => {

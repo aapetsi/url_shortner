@@ -8,10 +8,10 @@ export type UrlProps =  {
   handleDelete(url: string): void
 }
 
-const Url: FunctionComponent<UrlProps> = ({ originalUrl, shortUrl, handleDelete }) => {
+const Url: FunctionComponent<UrlProps> = ({ id, originalUrl, shortUrl, handleDelete }) => {
 
   const handleDeleteUrl = () => {
-    handleDelete(shortUrl)
+    handleDelete(id)
   }
 
   return (
