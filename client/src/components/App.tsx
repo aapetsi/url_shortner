@@ -21,13 +21,19 @@ const App = () => {
   }
 
   const handleDeleteAll = () => {
-    Axios.delete('http://localhost:3000/api/url/all', {data: ''})
+    const ans = confirm('Are you sure you want to delete all urls')
+    if (ans) {
+      Axios.delete('http://localhost:3000/api/url/all', {data: ''})
       .then(res => {
         setUrls([])
       })
       .catch(err => {
         setError('There was a problem deleting all urls')
       })
+    } else {
+      return
+    }
+    
   }
 
   const handleDelete = (shortUrl : string) : void => {
