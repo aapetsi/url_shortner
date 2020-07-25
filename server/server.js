@@ -1,8 +1,8 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
-const connectDB = require('./config/db')
-const urlRouter = require('./routes/api/url')
+const connectDB = require('./src/config/db')
+const urlRouter = require('./src/routes/api/url')
 const buildPath = path.join(__dirname, 'client', 'build')
 
 const app = express()

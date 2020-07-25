@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
-const UrlSchema = new mongoose.Schema({
+import mongoose from 'mongoose'
+
+const urlSchema = new mongoose.Schema({
   originalUrl: {
     type: String,
     required: true,
@@ -18,6 +19,6 @@ const UrlSchema = new mongoose.Schema({
   },
 })
 
-const Url = mongoose.model('url', UrlSchema)
+const url = mongoose.model('url', urlSchema)
 
-module.exports = Url
+export default url
