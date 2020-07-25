@@ -20,6 +20,20 @@ const App = () => {
       })
   }
 
+  const handleDeleteAll = () => {
+    Axios.delete('http://localhost:3000/api/url/all', {data: ''})
+      .then(res => {
+        setUrls([])
+      })
+      .catch(err => {
+        setError('There was a problem deleting all urls')
+      })
+  }
+
+  const handleDelete = (shortUrl : string) : void => {
+    alert(shortUrl)
+  }
+
   const fetchUrls = async () : Promise<void> => {
     const res = await Axios.get('http://localhost:3000/api/url/get_urls')
     if (res.status === 200 || res.statusText === '  OK') {
@@ -46,7 +60,8 @@ const App = () => {
     <div className='container'>
       <h1 data-testid="title">URL Shortener</h1>
       <UrlForm shortenUrl={shortenUrl} />
-      <UrlList urls={urls} error={error} />
+      <UrlList urls={urls} error={error} handleDelete={handleDelete}/>
+      <button className='delete-all' onClick={handleDeleteAll}>Delete all</button>
     </div>
   )
 }

@@ -4,13 +4,14 @@ export type UrlProps =  {
   shortUrl: string,
   id: string,
   originalUrl: string,
-  shortUrlHash: string
+  shortUrlHash: string,
+  handleDelete(url: string): void
 }
 
-const Url: FunctionComponent<UrlProps> = ({ originalUrl, shortUrl }) => {
+const Url: FunctionComponent<UrlProps> = ({ originalUrl, shortUrl, handleDelete }) => {
 
-  const handleOpenLink = () => {
-    window.open(originalUrl, '_blank')
+  const handleDeleteUrl = () => {
+    handleDelete(shortUrl)
   }
 
   return (
@@ -20,6 +21,9 @@ const Url: FunctionComponent<UrlProps> = ({ originalUrl, shortUrl }) => {
       </td>
       <td data-testid="url-short">
         {shortUrl}
+      </td>
+      <td>
+        <button className='delete-one' onClick={handleDeleteUrl}>Delete</button>
       </td>
     </tr>
   )

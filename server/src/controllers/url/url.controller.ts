@@ -53,4 +53,13 @@ const deleteLink = async (req: Request, res: Response) => {
   }
 }
 
-export { getUrls, createShortLink, deleteLink }
+const deleteAll = async (req: Request, res: Response) => {
+  try {
+    await Url.deleteMany({})
+    return res.status(200).json({message: 'Urls have been deleted'})
+  } catch (error) {
+    return res.status(500).json({ message: error.message })
+  }
+}
+
+export { getUrls, createShortLink, deleteLink, deleteAll }

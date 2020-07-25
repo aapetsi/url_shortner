@@ -17,6 +17,18 @@
   height: 32px;
 }
 
+.delete-all {
+  margin: 0 auto;
+  background: #dc3545;
+  height: 32px;
+}
+
+.delete-one {
+  width: 100%;
+  height: 32px;
+  background: #dc3545;
+}
+
 table {
   margin: 0 auto;
   width: 60%;

@@ -9,10 +9,11 @@ export type UrlListProps = {
     originalUrl: string,
     shortUrlHash: string
   }[],
-  error: string
+  error: string,
+  handleDelete(url: string): void
 }
 
-const UrlList : FunctionComponent<UrlListProps> = ({urls, error}) => {
+const UrlList : FunctionComponent<UrlListProps> = ({urls, error, handleDelete}) => {
   return (
     <div>
       {urls.length === 0 ? <p data-testid="no-urls">Start shortening your urls</p> : <p data-testid="urls-all">Here are your shortened urls</p>}
@@ -23,6 +24,7 @@ const UrlList : FunctionComponent<UrlListProps> = ({urls, error}) => {
           <tr>
             <td>Original Url</td>
             <td>Shortened Url</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +35,7 @@ const UrlList : FunctionComponent<UrlListProps> = ({urls, error}) => {
             id={url._id}
             originalUrl={url.originalUrl}
             shortUrlHash={url.shortUrlHash}
+            handleDelete={handleDelete}
             />
           ))}
         </tbody>
