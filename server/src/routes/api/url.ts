@@ -1,5 +1,5 @@
 import express from 'express'
-import {getUrls, createShortLink} from '../../controllers/url/url.controller'
+import { getUrls, createShortLink, deleteLink } from '../../controllers/url/url.controller'
 const router = express.Router()
 
 // Controllers
@@ -8,6 +8,6 @@ router.post('/createShortLink', createShortLink)
 
 router.get('/get_urls', getUrls)
 
-// module.exports = router
+router.delete('/:shortUrl', deleteLink)
 
 export default router
