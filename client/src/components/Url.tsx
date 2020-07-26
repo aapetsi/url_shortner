@@ -14,13 +14,18 @@ const Url: FunctionComponent<UrlProps> = ({ id, originalUrl, shortUrl, handleDel
     handleDelete(id)
   }
 
+  const handleCopyClipboard = () => {
+    navigator.clipboard.writeText(shortUrl)
+    alert('copied to clipboard')
+  }
+
   return (
       <tr className="link">
       <td>
         {originalUrl}
       </td>
       <td data-testid="url-short">
-        {shortUrl}<button className='copy-clipboard'>copy</button>
+        {shortUrl}<button className='copy-clipboard' onClick={handleCopyClipboard}>copy</button>
       </td>
       <td>
         <button className='delete-one' onClick={handleDeleteUrl} data-testid='delete-one'>Delete</button>
