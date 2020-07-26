@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import Url from './Url'
-import '../styles/UrlList.css'
 
 export type UrlListProps = {
   urls :  {

@@ -1,5 +1,4 @@
 import React, { useState, FunctionComponent, FormEvent, SyntheticEvent } from 'react'
-import '../styles/UrlForm.css'
 
 export type UrlFormProps = {
   shortenUrl: (url: string) => void
