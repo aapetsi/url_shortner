@@ -59,6 +59,7 @@ exports[`<App /> should render App 1`] = `
     </div>
     <button
       class="delete-all"
+      data-testid="delete-all"
       disabled=""
     >
       Delete all

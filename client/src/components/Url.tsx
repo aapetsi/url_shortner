@@ -23,7 +23,7 @@ const Url: FunctionComponent<UrlProps> = ({ id, originalUrl, shortUrl, handleDel
         {shortUrl}<button className='copy-clipboard'>copy</button>
       </td>
       <td>
-        <button className='delete-one' onClick={handleDeleteUrl}>Delete</button>
+        <button className='delete-one' onClick={handleDeleteUrl} data-testid='delete-one'>Delete</button>
       </td>
     </tr>
   )

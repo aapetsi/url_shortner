@@ -63,8 +63,8 @@ const App = () => {
     <div className='container'>
       <h1 data-testid="title">URL Shortener</h1>
       <UrlForm shortenUrl={shortenUrl} />
-      <UrlList urls={urls} error={error} handleDelete={handleDelete}/>
-      <button disabled={urls.length === 0} className='delete-all' onClick={handleDeleteAll}>Delete all</button>
+      <UrlList urls={urls} error={error} handleDelete={handleDelete} data-testid='rendered-urls'/>
+      <button disabled={urls.length === 0} className='delete-all' onClick={handleDeleteAll} data-testid='delete-all'>Delete all</button>
     </div>
   )
 }

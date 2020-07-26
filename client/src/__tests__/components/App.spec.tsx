@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import {render, act, screen, cleanup, waitForElement, findByTestId, waitForElementToBeRemoved, waitFor} from '@testing-library/react'
+import {render, fireEvent, act, screen, cleanup, waitForElement, findByTestId, waitForElementToBeRemoved, waitFor} from '@testing-library/react'
 import App from '../../components/App'
 
 jest.mock('axios')
@@ -30,6 +30,52 @@ describe('<App />', () => {
     
     expect(title.textContent).toBe('URL Shortener')
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  test('should show a disabled button', async () => {
+    const {getByTestId} = render(<App />)
+    
+    const button = await waitFor(() => getByTestId('delete-all'))
+
+    fireEvent.click(button)
+    
+    expect(button).toBeDisabled()
+  })
+
+  test('should delete all urls', async () => {
+    const {getByTestId} = render(<App />)
+
+    mockedAxios.get.mockResolvedValue({
+      data: {
+        urls: [
+          {
+            "_id": "5f19cc2a568952183a3c9fad",
+            "originalUrl": "https://google.com",
+            "shortUrl": "https://pbid.io/e4cdfe46",
+            "shortUrlHash": "e4cdfe46",
+            "dateCreated": "2020-07-23T17:43:06.342Z",
+            "__v": 0
+          },
+          {
+            "_id": "5f19ccae568952183a3c9fae",
+            "originalUrl": "https://facebook.com",
+            "shortUrl": "https://pbid.io/73c97875",
+            "shortUrlHash": "73c97875",
+            "dateCreated":" 2020-07-23T17:45:18.151Z",
+            "__v": 0
+          }
+        ]
+      }
+    })
+
+    const button = await waitFor(() => getByTestId('delete-all'))
+
+    fireEvent.click(button)
+
+    const urls = await waitFor(() => getByTestId('no-urls'))
+    
+    expect(button).toBeDisabled()
+    expect(urls.textContent).toBe('Start shortening your urls')
   })
 })
 
