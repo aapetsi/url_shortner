@@ -38,4 +38,18 @@ describe('Test delete a url from database', () => {
     expect(res.status).toBe(200)
     expect(res.body.message).toBe('Url has been deleted')
   })
+
+  test('should return url not found', async () => {
+    const res = await request(server).delete('/api/url/one/5f0b3a60bcf44a1b50d309cc')
+
+    expect(res.status).toBe(404)
+    expect(res.body.message).toBe('No such url exists')
+  })
+
+  test('should case a server error with wrong id', async () => {
+    const res = await request(server).delete('/api/url/one/someid')
+
+    expect(res.status).toBe(500)
+    expect(res.body.message).toBeDefined()
+  })
 })
