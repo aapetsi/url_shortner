@@ -4,14 +4,17 @@ A fullstack app for shortnening urls. This app was built using the _MERN (MongoD
 
 #### RUNNING THE APP WITH DOCKER
 
-To spin up a development docker container run:<br>
+To spin up a development docker container, from the root of the application run:<br>
 `docker-compose up --build`
 
 #### NOTE: YOU NEED TO HAVE DOCKER INSTALLED ON YOUR SYSTEM
 
 ##### TO RUN THE FULLSTACK APP LOCALLY
 
-Make sure you are in the root directory of the project and run the following commands:
+Make sure you are in the server directory of the project and run the following commands:
+
+Change to server directory by running:<br>
+`cd server/`
 
 To run the app locally on your machine do the following:
 
@@ -35,13 +38,13 @@ You can view the application by visiting `http://localhost:3000` in your browser
 
 ##### TO RUN THE FRONTEND REACT APPLICATION
 
-You can run the frontend application in two ways - either from the root of the application or by changing to the client directory and running the start script
+You can run the frontend application in two ways - either from the server directory of the application or by changing to the client directory and running the start script
 
-1. Running the frontend app from the application root<br>
+1. Running the frontend app from the server directory<br>
    Simply run `npm run client`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:1234` in your browser
 
 2. Running the app from the `client` directory<br>
-   Change into the client directory and run `npm start`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:1234` in your browser
+   Change into the client directory `cd client/` and run `npm start`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:1234` in your browser
 
 To run the test suites for the frontend app:
 `npm run test:watch` - runs the tests in watch mode
