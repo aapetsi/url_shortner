@@ -14,15 +14,14 @@ const UrlForm : FunctionComponent<UrlFormProps> = ({shortenUrl}) => {
 
   const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const httpRegex = /^https?:\/\/[a-zA-Z]+.[a-z]{2,3}(.[a-z]{2,3})$/i
-    const wwwRegex = /^www.[a-zA-Z]+.[a-z]{2,3}(.[a-z]{2,3})$/i
+    const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
+    const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
     if (httpRegex.test(text) || wwwRegex.test(text)) {
       shortenUrl(text)
       setText('')
       setError('')
     } else {
       setError('Make sure your url is of the form "https://somewebsite.com" or "www.somewebiste.com"')
-      setText('')
     }
   }
   
