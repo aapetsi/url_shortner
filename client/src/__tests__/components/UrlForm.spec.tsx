@@ -52,7 +52,7 @@ describe('<UrlForm />', () => {
 
     const errorText = await findByTestId('error-text')
 
-    expect(errorText.innerHTML).toBe('Make sure your url is of the form "https://somewebsite.com"')
+    expect(errorText.innerHTML).toBe('Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"')
   })
   
 })

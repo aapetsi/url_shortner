@@ -5,7 +5,11 @@ import {render} from '@testing-library/react'
 
 function renderUrlList(props: Partial<UrlListProps> = {}) {
   const defaultProps : UrlListProps = {
-    urls: []
+    urls: [],
+    error: '',
+    handleDelete(url) {
+      return
+    }
   }
   return render(<UrlList {...defaultProps}  {... props} />)
 }
