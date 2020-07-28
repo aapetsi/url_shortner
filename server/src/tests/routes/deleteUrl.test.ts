@@ -10,7 +10,7 @@ const clearDB = async () => {
 beforeAll(async () => {
   try {
     await clearDB()
-    let savedUrl = await Url.create ({
+    const savedUrl = await Url.create ({
       shortUrlHash: '2nf8dw8a',
       shortUrl: 'https://pbid.io/2nf8dw8a',
       originalUrl: 'https://yahoo.com',

@@ -83,6 +83,10 @@ button {
   text-transform: uppercase;
 }
 
+button:hover {
+  background: #556476;
+}
+
 @media only screen and (max-width: 540px) {
   form {
     display: flex;
