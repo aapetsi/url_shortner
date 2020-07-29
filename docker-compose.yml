@@ -15,12 +15,13 @@ services:
     ports:
       - 27017:27017
   server:
+    container_name: server
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: node-app
+    # image: node-app
     volumes:
-      - .server:/usr/src/app/server
+      - ./server:/usr/src/app/server
       - /usr/src/app/server/node_modules
     depends_on:
       - mongo
