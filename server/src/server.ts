@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import cors from 'cors'
 import urlRouter from './routes/api/url'
+import userRouter from './routes/api/user'
 
 import connectDB from './config/db'
 const buildPath = path.join(__dirname, 'client', 'build')
@@ -21,6 +22,7 @@ app.use(cors())
 
 // Routes middleware
 app.use('/api/url', urlRouter)
+app.use('/auth', userRouter)
 
 // send frontend react app
 // app.use((req, res) => {
