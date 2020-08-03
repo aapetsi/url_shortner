@@ -1,11 +1,11 @@
 <template>
   <tr>
-    <td>{{ originalUrl }}</td>
-    <td>{{ shortUrl }}
-      <button @click="handleCopyClipboard">Copy</button>
+    <td class="link">{{ originalUrl }}</td>
+    <td class="link">{{ shortUrl }}
+      <button class="copy-clipboard" @click="handleCopyClipboard">Copy</button>
     </td>
     <td>
-      <button @click="handleDeleteUrl">Delete </button>
+      <button class="delete-one" @click="handleDeleteUrl">X</button>
     </td>
   </tr>
 </template>
@@ -54,5 +54,42 @@ export default {
 </script>
 
 <style scoped>
+  .copy-clipboard {
+    display: inline-block;
+    background: green;
+    color: white;
+    height: 30px;
+    margin-left: 10px;
+    width: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+  }
 
+  .delete-one {
+    width: 50%;
+    height: 32px;
+    background: #dc3545;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @media only screen and (max-width: 540px) {
+    .copy-clipboard {
+      display: none;
+    }
+
+    .delete-one {
+      display: none;
+    }
+  }
 </style>

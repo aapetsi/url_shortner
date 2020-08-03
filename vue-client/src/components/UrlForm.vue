@@ -43,23 +43,56 @@ export default {
 </script>
 
 <style scoped>
+  form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
 
+  input {
+    width: 400px;
+    height: 35px;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    margin-bottom: auto 20px;
+  }
+
+  button {
+    width: 90px;
+    height: 47px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+
+  button:hover {
+    background: #556476;
+  }
+
+  @media only screen and (max-width: 540px) {
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      margin: auto;
+    }
+
+    input {
+      width: 70%;
+    }
+
+    button {
+      width: 73%;
+      margin-top: 15px;
+      margin-left: 0;
+    }
+  }
 </style>
-
-'''
-<div>
-      <form onSubmit={handleSubmit} data-testid="url-form">
-        <input
-          type='text'
-          required={true}
-          onChange={handleChange}
-          name='text'
-          placeholder='https://example.com'
-          value={text}
-          data-testid='url'
-        />
-        <button data-testid="submit">Shorten</button>
-      </form>
-      {error && <p data-testid="error-text">{error}</p>}
-    </div>
-'''

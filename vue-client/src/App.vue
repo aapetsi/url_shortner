@@ -3,7 +3,7 @@
     <h1>URL Shortener</h1>
     <UrlForm v-bind:shortenUrl="shortenUrl" />
     <UrlList v-bind:urls="urls" v-bind:error="error" v-bind:handleDelete="handleDelete" />
-    <button @click="handleDeleteAll" :disabled="urls.length === 0">Delete all</button>
+    <button class="delete-all" @click="handleDeleteAll" :disabled="urls.length === 0">Delete all</button>
   </div>
 </template>
 
@@ -72,6 +72,31 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  #app {
+    background: #e3e3e3;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
 
+  .delete-all {
+    margin: 0 auto;
+    background: #dc3545;
+    height: 32px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .delete-all[disabled]:hover {
+    cursor: not-allowed;
+  }
 </style>
