@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <UrlForm />
+    <UrlList />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -7,11 +9,15 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import UrlList from './components/UrlList.vue'
+import UrlForm from './components/UrlForm.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    UrlForm,
+    UrlList
   }
 }
 </script>
