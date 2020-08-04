@@ -6,3 +6,14 @@ export interface Url {
   handleDelete: (id: string) => void
 }
 
+interface Urls {
+  _id: string,
+  originalUrl: string,
+  shortUrl: string,
+  shortUrlHash: string,
+  dateCreated: Date
+__v: number
+}
+
+export type UrlsType = Urls[]
+

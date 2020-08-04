@@ -10,8 +10,10 @@
   </tr>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend ({
   props: {
     shortUrl: {
       type: String,
@@ -34,23 +36,19 @@ export default {
       required: true
     }
   },
-  name: 'Url',
-  data: function() {
-    return {
-
-    }
-  },
+  name: 'Url' as string,
+  data: () => ({}),
   methods: {
-    handleDeleteUrl: function() {
+    handleDeleteUrl() : void {
       this.handleDelete(this.id)
     },
 
-    handleCopyClipboard: function() {
+    handleCopyClipboard() : void {
       navigator.clipboard.writeText(this.shortUrl)
       alert('copied to clipboard')
     }
   }
-}
+})
 </script>
 
 <style scoped>

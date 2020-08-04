@@ -8,23 +8,23 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   props: {
     shortenUrl: {
       type: Function,
       required: true
     }
   },
-  name: 'UrlForm',
-  data: function() {
-    return {
-      url: '',
-      error: ''
-    }
-  },
+  name: 'UrlForm' as string,
+  data: () =>  ({
+    url: '' as string,
+    error: '' as string
+  }),
   methods: {
-    handleSubmit: function (event) {
+    handleSubmit(event : Event) : void {
       event.preventDefault()
 
       const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
@@ -39,7 +39,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>

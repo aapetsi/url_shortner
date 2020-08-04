@@ -7,25 +7,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import UrlList from './components/UrlList.vue'
 import UrlForm from './components/UrlForm.vue'
+import { UrlsType } from '../types'
 import Axios from 'axios'
 
-export default {
-  name: 'App',
+export default Vue.extend({
+  name: 'App' as string,
   components: {
     UrlForm,
     UrlList
   },
-  data: function() {
-    return {
-      urls: [],
-      error: ''
-    }
-  },
+  data: () => ({
+    urls: [] as UrlsType,
+    error: '' as string
+  }),
   methods: {
-    shortenUrl: async function(originalUrl) {
+    async shortenUrl(originalUrl : string) : Promise<void> {
       try {
         const res = await Axios.post('http://localhost:3000/api/url/createShortLink', { originalUrl })
         this.urls = [...this.urls, res.data]
@@ -35,8 +35,8 @@ export default {
       }
     },
 
-    handleDeleteAll: async function() {
-      const ans = confirm('Are you sure you want to delete all urls')
+    async handleDeleteAll() : Promise<void> {
+      const ans : boolean = confirm('Are you sure you want to delete all urls')
       try {
         if (ans) {
           const res = await Axios.delete('http://localhost:3000/api/url/all', {data: ''})
@@ -48,9 +48,9 @@ export default {
       }
     },
 
-    handleDelete: async function(id) {
+    async handleDelete(id : string) : Promise<void> {
       try {
-        const ans = confirm('Are you sure want to delete this url')
+        const ans : boolean = confirm('Are you sure want to delete this url')
         if (ans) {
           await Axios.delete(`http://localhost:3000/api/url/one/${id}`, {data: ''})
           this.urls = this.urls.filter(url => url._id !== id)
@@ -58,18 +58,18 @@ export default {
       } catch (error) {
         this.error = 'There was a problem deleting the url'
       }
-      console.log('handleDelete')
     }
   },
-  mounted: async function() {
+  async mounted() {
     try {
       const res = await Axios.get('http://localhost:3000/api/url/get_urls')
+
       this.urls = res.data
     } catch (error) {
       this.error = 'Oops there seems to be a problem fetching your saved urls'
     }
   },
-}
+})
 </script>
 
 <style scoped>

@@ -18,9 +18,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import Url from './Url.vue'
-export default {
+
+export default Vue.extend({
   props: {
     urls: {
       type: Array,
@@ -38,13 +40,9 @@ export default {
   components: {
     Url
   },
-  name: 'UrlList',
-  data: function() {
-    return {
-
-    }
-  }
-}
+  name: 'UrlList' as string,
+  data: () => ({})
+})
 </script>
 
 <style scoped>
