@@ -59,10 +59,16 @@ export default {
     margin-bottom: auto 20px;
   }
 
+  p {
+    color: red;
+  }
+
   button {
     width: 90px;
     height: 47px;
     border-radius: 5px;
+    border: 0;
+    box-shadow: none;
     cursor: pointer;
     color: white;
     background-color: blue;

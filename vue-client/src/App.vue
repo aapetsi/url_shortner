@@ -85,15 +85,26 @@ export default {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+  h1 {
+    font-size: 40px;
+  }
+
   .delete-all {
     margin: 0 auto;
     background: #dc3545;
-    height: 32px;
+    height: 38px;
     color: white;
     text-transform: uppercase;
     font-weight: bolder;
     border-radius: 5px;
     margin-top: 20px;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .delete-all:hover {
+    background: #556476;
   }
 
   .delete-all[disabled]:hover {

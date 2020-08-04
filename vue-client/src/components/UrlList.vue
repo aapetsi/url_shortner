@@ -3,12 +3,12 @@
     <p v-if="urls.length === 0">Start shortening your urls</p>
     <p v-else-if="urls.length > 0">Here are your shortened urls</p>
     <p v-show="error">{{ error }}</p>
-    <table>
+    <table v-show="urls.length != 0">
       <thead>
         <tr>
           <td>Original Url</td>
           <td>Shortened Url</td>
-          <td>Remove</td>
+          <td>Action</td>
         </tr>
       </thead>
       <tbody>

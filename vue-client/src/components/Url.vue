@@ -5,7 +5,7 @@
       <button class="copy-clipboard" @click="handleCopyClipboard">Copy</button>
     </td>
     <td>
-      <button class="delete-one" @click="handleDeleteUrl">X</button>
+      <button class="delete-one" @click="handleDeleteUrl">Delete</button>
     </td>
   </tr>
 </template>
@@ -30,7 +30,7 @@ export default {
       required: true
     },
     handleDelete: {
-      type: String,
+      type: Function,
       required: true
     }
   },
@@ -58,23 +58,32 @@ export default {
     display: inline-block;
     background: green;
     color: white;
-    height: 30px;
+    height: 32px;
     margin-left: 10px;
     width: 60px;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 5px;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
   }
 
   .delete-one {
-    width: 50%;
     height: 32px;
     background: #dc3545;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 5px;
+    border: 0;
+    box-shadow: none;
     text-align: center;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #556476;
   }
 
   .link {
