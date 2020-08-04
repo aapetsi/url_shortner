@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Default command
-CMD [ "npm", "serve" ]
+CMD [ "npm", "run", "serve" ]

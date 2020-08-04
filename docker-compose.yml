@@ -3,11 +3,11 @@ services:
   client:
     container_name: url-client
     restart: always
-    build: ./client
+    build: ./vue-client
     volumes:
       - ./client:/usr/src/app/client
     ports:
-      - '1234:1234'
+      - '8080:8080'
   mongo:
     image: mongo
     restart: always
