@@ -1196,6 +1196,11 @@
   resolved "https://registry.npm.taobao.org/@soda/get-current-script/download/@soda/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha1-pTUV2yXYA4N0OBtzryC7Ty5QjYc=
 
+"@tsconfig/node12@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node12/-/node12-1.0.6.tgz#e8e307622b8ccf9ddda38485608917fe95da8435"
+  integrity sha512-gRDjkFXlshiyQEH3gUVAmoOUZVd5tZb2h8WluE9KiU8ZFy2mqsHCdBg6NY2nbahSMkSLrYd9Z0FqlTDW17ImGw==
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.9"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.9.tgz#77e59d438522a6fb898fa43dc3455c6e72f3963d"
@@ -6144,6 +6149,11 @@ jest-snapshot@^26.2.2:
     natural-compare "^1.4.0"
     pretty-format "^26.2.0"
     semver "^7.3.2"
+
+jest-transform-stub@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-transform-stub/-/jest-transform-stub-2.0.0.tgz#19018b0851f7568972147a5d60074b55f0225a7d"
+  integrity sha512-lspHaCRx/mBbnm3h4uMMS3R5aZzMwyNpNIJLXj4cEsV0mIUtS4IjYJLSoyjRCtnxb6RIGJ4NL2quZzfIeNhbkg==
 
 jest-util@26.x, jest-util@^26.2.0:
   version "26.2.0"

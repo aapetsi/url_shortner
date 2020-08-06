@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "jest"
+    "test:unit": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -16,6 +16,7 @@
     "vue-property-decorator": "^9.0.0"
   },
   "devDependencies": {
+    "@tsconfig/node12": "^1.0.6",
     "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
@@ -31,6 +32,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "^26.2.2",
+    "jest-transform-stub": "^2.0.0",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7",
     "vue-jest": "^3.0.6",
@@ -47,30 +49,39 @@
       "vue",
       "node"
     ],
-    "moduleDirectories": ["node_modules", "src"],
-    "modulePaths": ["<rootDir>/src", "<rootDir>/node_modules"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "modulePaths": [
+      "<rootDir>/src",
+      "<rootDir>/node_modules"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1",
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
     },
-    "preset": "ts-jest/presets/js-with-babel",
+    "preset": "ts-jest/presets/js-with-ts",
     "transform": {
       ".*\\.(vue)$": "vue-jest",
       "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(bootstrap-vue)/)"
+      "node_modules/tsconfig/src/tsconfig.ts"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/src/__tests__",
+      "/build/",
+      "/dist/"
     ],
     "testURL": "http://localhost/",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testEnvironment": "node",
     "verbose": true,
     "collectCoverage": true,
-    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
     "globals": {
       "ts-jest": {
         "tsConfig": "./tsconfig.json"

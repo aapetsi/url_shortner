@@ -1,7 +1,8 @@
 {
+  "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
+    "target": "ES5",
+    "module": "ESNext",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -27,7 +28,8 @@
       "dom.iterable",
       "scripthost",
       "es2019"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",
@@ -37,11 +39,13 @@
     "tests/**/*.tsx", 
     // "src/tests/App.spec.js"
   ],
-  // "files": [
-  //   "src/shims-tsx.d.ts",
-  //   "src/shims-vue.d.ts"
-  // ],
+  "files": [
+    "src/shims-tsx.d.ts",
+    "src/shims-vue.d.ts"
+  ],
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "typeRoots": ["node_modules/@types"]
 }
