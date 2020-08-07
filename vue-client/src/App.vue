@@ -3,7 +3,7 @@
     <h1>URL Shortener</h1>
     <UrlForm v-bind:shortenUrl="shortenUrl" />
     <UrlList v-bind:urls="urls" v-bind:error="error" v-bind:handleDelete="handleDelete" />
-    <button class="delete-all" @click="handleDeleteAll" :disabled="urls.length === 0">Delete all</button>
+    <button v-show="urls.length > 0" class="delete-all" @click="handleDeleteAll" :disabled="urls.length === 0">Delete all</button>
   </div>
 </template>
 
