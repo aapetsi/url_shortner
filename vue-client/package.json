@@ -28,7 +28,7 @@
     "@vue/cli-service": "~4.4.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.0.3",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.2.2",
     "eslint": "^6.7.2",
@@ -65,8 +65,8 @@
     },
     "preset": "ts-jest",
     "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.tsx?$": "babel-jest",
+      ".+\\.vue$": "vue-jest",
+      "^.+\\.tsx?$": "ts-jest",
       "^.+\\.jsx?$": "babel-jest",
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     },
