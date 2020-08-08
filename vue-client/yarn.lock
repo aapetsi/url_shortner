@@ -7074,6 +7074,13 @@ json3@^3.3.2:
   resolved "https://registry.npm.taobao.org/json3/download/json3-3.3.3.tgz#7fc10e375fc5ae42c4705a5cc0aa6f62be305b81"
   integrity sha1-f8EON1/FrkLEcFpcwKpvYr4wW4E=
 
+json5-jest@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/json5-jest/-/json5-jest-1.0.1.tgz#3839f6de8a89be4366b6ad1c60aa1a2c2fe9b352"
+  integrity sha512-3LwSMrhlQtbQQUUa6cImz+Aga8xs7LZCmS/Ke+Kgu6ZmyWOaGBnoUI1jnhEEJ3AM90k40oTGr/EnFchtv261mQ==
+  dependencies:
+    json5 "^1.0.1"
+
 json5@2.x, json5@^2.1.2:
   version "2.1.3"
   resolved "https://registry.npm.taobao.org/json5/download/json5-2.1.3.tgz#c9b0f7fa9233bfe5807fe66fcf3a5617ed597d43"

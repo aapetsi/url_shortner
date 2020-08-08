@@ -9,9 +9,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import UrlList from './components/UrlList.vue'
-import UrlForm from './components/UrlForm.vue'
-import { UrlsType } from '../types'
+import UrlList from '@/components/UrlList.vue'
+import UrlForm from '@/components/UrlForm.vue'
+import { UrlsType } from '@/types'
 import Axios from 'axios'
 
 export default Vue.extend({
