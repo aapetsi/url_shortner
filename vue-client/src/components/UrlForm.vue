@@ -1,7 +1,7 @@
 <template>
   <div>
     <form v-on:submit.prevent="handleSubmit">
-      <input type="text" required name='text' v-model="url">
+      <input type="text" required v-model="url">
       <button>Shorten</button>
     </form>
     <p v-show="error">{{ error }}</p>

@@ -5,5 +5,4 @@ describe('App.vue component', () => {
   test('should render App', () => {
     const wrapper = shallowMount(App)
   })
-  
 })

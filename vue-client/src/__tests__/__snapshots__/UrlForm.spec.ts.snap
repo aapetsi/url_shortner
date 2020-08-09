@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UrlForm.vue component should render Url form 1`] = `
+VueWrapper {
+  "_emitted": Object {},
+  "_emittedByOrder": Array [],
+  "isFunctionalComponent": undefined,
+}
+`;
+
+exports[`UrlForm.vue component should throw error with wrong url format 1`] = `
+VueWrapper {
+  "_emitted": Object {},
+  "_emittedByOrder": Array [],
+  "isFunctionalComponent": undefined,
+}
+`;
