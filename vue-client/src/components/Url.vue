@@ -1,7 +1,7 @@
 <template>
   <tr>
-    <td class="link">{{ originalUrl }}</td>
-    <td class="link">{{ shortUrl }}
+    <td class="link" data-testid="originalUrl">{{ originalUrl }}</td>
+    <td class="link" data-testid="shortUrl">{{ shortUrl }}
       <button class="copy-clipboard" @click="handleCopyClipboard">Copy</button>
     </td>
     <td>
