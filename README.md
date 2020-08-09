@@ -32,7 +32,7 @@ You can optionally run `npm run dev` to have a development server which automati
 
 The app should start running on `port 3000`. <br>
 
-You can view the application by visiting `http://localhost:8081` in your browser
+You can view the application by visiting `http://localhost:8080` in your browser
 
 #
 
@@ -41,10 +41,10 @@ You can view the application by visiting `http://localhost:8081` in your browser
 You can run the frontend application in two ways - either from the server directory of the application or by changing to the vue-client directory and running the start script
 
 1. Running the frontend app from the server directory<br>
-   Simply run `npm run client`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:8081` in your browser
+   Simply run `npm run client`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:8080` in your browser
 
 2. Running the app from the `client` directory<br>
-   Change into the client directory `cd client/` and run `npm run serve`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:8081` in your browser
+   Change into the client directory `cd client/` and run `npm run serve`. This should spin up a developement server on port `1234`. You can then view the app by visiting `http://localhost:8080` in your browser
 
 To run the test suites for the frontend app:
 `npm run test:unit` - runs the tests in watch mode
