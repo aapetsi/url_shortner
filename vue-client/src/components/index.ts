@@ -1,5 +1,11 @@
-
-import HelloWorld from './HelloWorld.vue'
 import Url from './Url.vue'
+import UrlForm from './UrlForm.vue'
+import UrlList from './UrlList.vue'
+import App from '../App.vue'
 
-export default Url
+export {
+  Url,
+  UrlForm,
+  UrlList,
+  App
+}

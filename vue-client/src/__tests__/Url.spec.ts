@@ -1,9 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
-import Url from '../components/Url.vue'
+import { Url } from '../components'
 
 describe("Url.vue component", () => {
   test('should render the Url component', async () => {
-    // const div = document.createElement('div')
     const wrapper = shallowMount(Url, {
       propsData: {
         shortUrl: 'https://pbid.io/1930de5d',
