@@ -57,6 +57,5 @@ describe("Url.vue component", () => {
     expect(handleDelete).toHaveBeenCalled()
     expect(handleDelete).toHaveBeenCalledWith('5f2e50a5fc53ec4012fdc0ac')
     expect(handleDelete).toHaveBeenCalledTimes(1)
-    
   })
 })
