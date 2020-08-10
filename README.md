@@ -20,6 +20,15 @@ To run the app locally on your machine do the following:
 
 #
 
+Add a `.env` file to the server folder with the following:<br>
+```code
+MONGO_HOSTNAME=mongo
+MONGO_HOSTNAME_TEST=mongo
+MONGO_DB=url_shortner
+MONGO_DB_TEST=url_shortner_test
+MONGO_PORT=27017
+```
+
 Install all packages required by the application<br>
 `npm install`
 
