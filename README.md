@@ -21,6 +21,7 @@ To run the app locally on your machine do the following:
 #
 
 Add a `.env` file to the server folder with the following:<br>
+
 ```code
 MONGO_HOSTNAME=mongo
 MONGO_HOSTNAME_TEST=mongo
