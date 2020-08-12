@@ -3,10 +3,14 @@ import { login, register } from '../../controllers/auth/auth.controller'
 
 const router = express.Router()
 
-// Controllers
-// routes
+// @route POST api/auth/register
+// @desc Register new user
+// @access Public
 router.post('/register', register)
 
-router.get('/login', login)
+// @route POST api/auth/login
+// @desc Login  user
+// @access Public
+router.post('/login', login)
 
 export default router
