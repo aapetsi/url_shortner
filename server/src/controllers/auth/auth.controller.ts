@@ -1,4 +1,4 @@
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import User from '../../models/User.model'
 
 export const login = async (req: Request, res: Response) => {
@@ -12,10 +12,21 @@ export const login = async (req: Request, res: Response) => {
   }
 }
 
-export const register = (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
   const {username, email, password} = req.body
   try {
-    
+    const foundUser = await User.findOne({ email })
+    if (foundUser) {
+      return res.status(400).json({message: 'User already exists'})
+    }
+    const newUser = new User({
+      username,
+      email,
+      password
+    })
+    // replace password with bcrypt
+    const savedUser = await newUser.save()
+    return res.status(201).json({savedUser})
   } catch (error) {
     return res.status(500).json({message: error.message})
   }
