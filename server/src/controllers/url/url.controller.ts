@@ -2,8 +2,6 @@ import Url from '../../models/Url.model'
 import { Request, Response } from 'express'
 import {v4 as uuidv4} from 'uuid'
 
-const baseUrl = process.env.BASE_URL || 'http://localhost:1234'
-
 const getUrls = async (req: Request, res: Response) => {
   const urls = await Url.find()
   return res.status(200).json(urls)
