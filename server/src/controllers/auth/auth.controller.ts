@@ -13,6 +13,7 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const register = (req: Request, res: Response) => {
+  const {username, email, password} = req.body
   try {
     
   } catch (error) {
