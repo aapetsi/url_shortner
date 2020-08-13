@@ -1,6 +1,7 @@
 import Url from '../../models/Url.model'
 import { Request, Response } from 'express'
 import {v4 as uuidv4} from 'uuid'
+import verifyUrl from '../../helpers/verifyUrl'
 
 const getUrls = async (req: Request, res: Response) => {
   const urls = await Url.find()
@@ -12,6 +13,10 @@ const createShortLink = async (req: Request, res: Response) => {
 
   if (!originalUrl) {
     return res.status(400).json({ message: 'Please provide a valid url' })
+  }
+
+  if (!verifyUrl(originalUrl)) {
+    return res.status(400).json({message: 'Url is not in a valid format'})
   }
 
   try {

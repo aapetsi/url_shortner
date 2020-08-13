@@ -6,7 +6,6 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "npm run build && node build/index.js",
-    "start:dev": "nodemon --config \"./util/nodemon.json\"",
     "server": "nodemon ./build/index.js",
     "client": "npm run serve --prefix ../vue-client",
     "client:build": "npm run build --prefix ../vue-client",
