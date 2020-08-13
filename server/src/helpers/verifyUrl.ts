@@ -4,4 +4,3 @@ export default (url: string) : boolean => {
 
   return httpRegex.test(url) || wwwRegex.test(url)
 }
-
