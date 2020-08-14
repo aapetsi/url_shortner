@@ -1,8 +1,10 @@
 import { Request, Response } from 'express'
 import User from '../../models/User.model'
+import validateLoginInput from '../../middleware/validateLoginInput'
 
 export const login = async (req: Request, res: Response) => {
   const {email, password} = req.body
+  const {error, isValid} = validateLoginInput({email, password})
   try {
     const user = await User.findOne({email})
     // implement user authentication here

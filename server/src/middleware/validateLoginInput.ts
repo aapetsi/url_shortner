@@ -1,12 +1,17 @@
 import Validator from 'validator'
 import isEmpty from 'is-empty'
 
-type Data = {
+interface Data  {
   email: string,
   password: string
 }
 
-const validateLoginInput = async ({ email, password } : Data) => {
+interface FunctionReturn {
+  errors: Data,
+  isEmpty: boolean
+}
+
+const validateLoginInput =  ({ email, password } : Data): FunctionReturn => {
   const errors: Data = {email: '', password: ''}
 
   email = !isEmpty(email) ? email : ''
@@ -19,4 +24,11 @@ const validateLoginInput = async ({ email, password } : Data) => {
   if (Validator.isEmpty(password)) {
     errors.password = 'Password field is required'
   }
+
+  return {
+    errors,
+    isEmpty: isEmpty(errors)
+  }
 }
+
+export default validateLoginInput
