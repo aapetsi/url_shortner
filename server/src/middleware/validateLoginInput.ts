@@ -8,10 +8,10 @@ interface Data  {
 
 interface FunctionReturn {
   errors: Data,
-  isEmpty: boolean
+  isValid: boolean
 }
 
-const validateLoginInput =  ({ email, password } : Data): FunctionReturn => {
+const validateLoginInput =  ({ email, password }: Data): FunctionReturn => {
   const errors: Data = {email: '', password: ''}
 
   email = !isEmpty(email) ? email : ''
@@ -27,7 +27,7 @@ const validateLoginInput =  ({ email, password } : Data): FunctionReturn => {
 
   return {
     errors,
-    isEmpty: isEmpty(errors)
+    isValid: isEmpty(errors)
   }
 }
 

@@ -4,7 +4,8 @@ import validateLoginInput from '../../middleware/validateLoginInput'
 
 export const login = async (req: Request, res: Response) => {
   const {email, password} = req.body
-  const {error, isValid} = validateLoginInput({email, password})
+  const {errors, isValid} = validateLoginInput({email, password})
+  
   try {
     const user = await User.findOne({email})
     // implement user authentication here
