@@ -3,6 +3,7 @@ import isEmpty from 'is-empty'
 
 interface Data  {
   email: string,
+  username: string,
   password: string
 }
 
@@ -11,10 +12,11 @@ interface FunctionReturn {
   isValid: boolean
 }
 
-const validateLoginInput =  ({ email, password }: Data): FunctionReturn => {
+const validateRegisterInput =  ({ email, username, password }: Data): FunctionReturn => {
   const errors: Data = <Data>{}
 
   email = !isEmpty(email) ? email : ''
+  username = !isEmpty(username) ? username : ''
   password = !isEmpty(password) ? password : ''
 
   if (Validator.isEmpty(email)) {
@@ -31,4 +33,4 @@ const validateLoginInput =  ({ email, password }: Data): FunctionReturn => {
   }
 }
 
-export default validateLoginInput
+export default validateRegisterInput

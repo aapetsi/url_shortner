@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import User from '../../models/User.model'
 import validateLoginInput from '../../middleware/validateLoginInput'
+import validateRegisterInput from '../../middleware/validateRegisterInput'
 
 export const login = async (req: Request, res: Response) => {
   const {email, password} = req.body
@@ -17,6 +18,8 @@ export const login = async (req: Request, res: Response) => {
 
 export const register = async (req: Request, res: Response) => {
   const {username, email, password} = req.body
+  const {errors, isValid} = validateRegisterInput({ email, username, password })
+
   try {
     const foundUser = await User.findOne({ email })
     if (foundUser) {
