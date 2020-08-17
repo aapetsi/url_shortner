@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import bcrypt from 'bcryptjs'
 import User from '../../models/User.model'
 import validateLoginInput from '../../middleware/validateLoginInput'
 import validateRegisterInput from '../../middleware/validateRegisterInput'
@@ -35,7 +36,12 @@ export const register = async (req: Request, res: Response) => {
       email,
       password
     })
-    // replace password with bcrypt
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(newUser.password, salt);
+    
+    newUser.password = hash
+    
     const savedUser = await newUser.save()
 
     const token = generateToken(newUser)
