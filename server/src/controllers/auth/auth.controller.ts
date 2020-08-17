@@ -22,9 +22,7 @@ export const register = async (req: Request, res: Response) => {
   const {username, email, password, password2} = req.body
   const {errors, isValid} = validateRegisterInput({ email, username, password, password2 })
 
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
+  if (!isValid) return res.status(400).json(errors)
   
   try {
     const foundUser = await User.findOne({ email })
