@@ -18,7 +18,7 @@ const validateLoginInput =  ({ email, password }: Data): FunctionReturn => {
   password = !isEmpty(password) ? password : ''
 
   if (Validator.isEmpty(email)) {
-    errors.email = 'Username is required'
+    errors.email = 'Email is required'
   }
 
   if (Validator.isEmpty(password)) {
