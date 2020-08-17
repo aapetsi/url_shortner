@@ -36,7 +36,25 @@ describe('Test registering a user', () => {
     expect(res.body.password2).toBe('Confirm password field is required')
   })
 
-  test('should return user already exists', async () => {
+  test('should successfully create a new user', async () => {
+    const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123456'})
     
+    expect(res.status).toBe(201)
+    expect(res.body.user._id).toBeDefined()
+    expect(res.body.user.email).toBeDefined()
+    expect(res.body.user.email).toBeDefined()
+  })
+
+  test('should return user already exists', async () => {
+    const newUser = new User({
+      email: 'johndoe@gmail.com',
+      username: 'johndoe',
+      password: '123456'
+    })
+    await newUser.save()
+    const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123456'})
+    
+    expect(res.status).toBe(400)
+    expect(res.body.message).toBe('User already exists')
   })
 })

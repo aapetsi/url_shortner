@@ -3,6 +3,7 @@ import {Document, Model} from 'mongoose'
 export interface IUser {
   username: string,
   email: string,
+  password: string,
   date: Date
 }
 
