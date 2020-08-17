@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { IUserDocument } from 'src/types'
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -19,6 +20,6 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-const user = mongoose.model('user', userSchema)
+const user = mongoose.model<IUserDocument>('user', userSchema)
 
 export default user

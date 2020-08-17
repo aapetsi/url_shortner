@@ -17,9 +17,13 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const register = async (req: Request, res: Response) => {
-  const {username, email, password} = req.body
-  const {errors, isValid} = validateRegisterInput({ email, username, password })
+  const {username, email, password, password2} = req.body
+  const {errors, isValid} = validateRegisterInput({ email, username, password, password2 })
 
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+  
   try {
     const foundUser = await User.findOne({ email })
     if (foundUser) {
@@ -32,7 +36,8 @@ export const register = async (req: Request, res: Response) => {
     })
     // replace password with bcrypt
     const savedUser = await newUser.save()
-    return res.status(201).json({savedUser})
+    
+    return res.status(201).json({user: {_id: savedUser._id, email: savedUser.email, username: savedUser.username}})
   } catch (error) {
     return res.status(500).json({message: error.message})
   }
