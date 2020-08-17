@@ -8,6 +8,8 @@ import generateToken from '../../helpers/generateToken'
 export const login = async (req: Request, res: Response) => {
   const {email, password} = req.body
   const {errors, isValid} = validateLoginInput({email, password})
+
+  if (!isValid) return res.status(400).json(errors)
   
   try {
     const user = await User.findOne({email})
