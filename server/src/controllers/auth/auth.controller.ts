@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import User from '../../models/User.model'
 import validateLoginInput from '../../middleware/validateLoginInput'
 import validateRegisterInput from '../../middleware/validateRegisterInput'
+import generateToken from '../../helpers/generateToken'
 
 export const login = async (req: Request, res: Response) => {
   const {email, password} = req.body
@@ -36,8 +37,17 @@ export const register = async (req: Request, res: Response) => {
     })
     // replace password with bcrypt
     const savedUser = await newUser.save()
-    
-    return res.status(201).json({user: {_id: savedUser._id, email: savedUser.email, username: savedUser.username}})
+
+    const token = generateToken(newUser)
+
+    return res.status(201).json({
+      user: {
+        _id: savedUser._id, 
+        email: savedUser.email, 
+        username: savedUser.username
+      },
+      token
+    })
   } catch (error) {
     return res.status(500).json({message: error.message})
   }

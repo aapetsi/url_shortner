@@ -36,6 +36,13 @@ describe('Test registering a user', () => {
     expect(res.body.password2).toBe('Confirm password field is required')
   })
 
+  test('should throw error passwords must match', async () => {
+    const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123457'})
+
+    expect(res.status).toBe(400)
+    expect(res.body.password2).toBe('Both passwords must match')
+  })
+
   test('should successfully create a new user', async () => {
     const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123456'})
     
