@@ -1,5 +1,4 @@
 import request from 'supertest'
-import mongoose from 'mongoose'
 import Url from '../../models/Url.model'
 import server from '../../server'
 
@@ -60,5 +59,12 @@ describe('Test creating a short link', () => {
     expect(res.status).toBe(400)
     expect(res.body).toBeDefined()
     expect(res.body.message).toBe('Please provide a valid url')
+  })
+
+  test('should return error with invalid url format', async () => {
+    const res = await request(server).post(api).send({originalUrl: 'ww.asd.ff.asdf.f'})
+
+    expect(res.status).toBe(400)
+    expect(res.body.message).toBe('Url is not in a valid format')
   })
 })
