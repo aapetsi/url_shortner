@@ -53,7 +53,7 @@ describe('Test creating a short link', () => {
 
   test('should ask for a valid url field', async () => {
     const res = await request(server)
-      .post('/api/url/createShortLink')
+      .post(api)
       .send({ originalUrl: '' })
 
     expect(res.status).toBe(400)

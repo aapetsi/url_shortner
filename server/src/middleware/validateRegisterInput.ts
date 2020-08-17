@@ -29,12 +29,12 @@ const validateRegisterInput =  ({ email, username, password, password2 }: Data):
     errors.email = 'Email is required'
   }
 
-  if (Validator.isEmpty(username)) {
-    errors.username = 'Username is required'
-  }
-
   if (!Validator.isLength(username, {min: 2, max: 30})) {
     errors.username = 'Username must be at least 2 characters'
+  }
+
+  if (Validator.isEmpty(username)) {
+    errors.username = 'Username is required'
   }
 
   if (!Validator.isLength(password, {min: 6})) {
