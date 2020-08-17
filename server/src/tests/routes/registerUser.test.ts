@@ -50,6 +50,7 @@ describe('Test registering a user', () => {
     expect(res.body.user._id).toBeDefined()
     expect(res.body.user.email).toBeDefined()
     expect(res.body.user.email).toBeDefined()
+    expect(res.body.token).toBeDefined()
   })
 
   test('should return user already exists', async () => {
