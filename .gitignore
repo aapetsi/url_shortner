@@ -6,5 +6,4 @@ npm-debug.log
 coverage
 .cache
 build/
-.env
-.env-docker
+server/.env-docker
