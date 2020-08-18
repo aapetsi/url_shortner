@@ -2,8 +2,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { MongoVariables } from '../types'
 
-dotenv.config()
-
 declare var process : {
   env: {
     MONGO_HOSTNAME : string

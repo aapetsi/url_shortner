@@ -1,4 +1,5 @@
 import {Document, Model} from 'mongoose'
+import {Request} from 'express'
 
 export interface MongoVariables {
   MONGO_HOSTNAME : string
@@ -6,6 +7,15 @@ export interface MongoVariables {
   MONGO_DB_TEST: string
   MONGO_PORT: number
 }
+
+export interface IDecodedToken {
+  decodedToken: {
+    sub: string,
+    username: string
+  }
+}
+
+export interface IRequest extends IDecodedToken, Request {}
 
 export interface IUser {
   username: string,
