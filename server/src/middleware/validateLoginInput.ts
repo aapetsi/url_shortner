@@ -12,7 +12,7 @@ interface FunctionReturn {
 }
 
 const validateLoginInput =  ({ email, password }: Data): FunctionReturn => {
-  const errors: Data = <Data>{}
+  const errors: Data = {} as Data
 
   email = !isEmpty(email) ? email : ''
   password = !isEmpty(password) ? password : ''

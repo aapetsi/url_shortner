@@ -14,7 +14,7 @@ interface FunctionReturn {
 }
 
 const validateRegisterInput =  ({ email, username, password, password2 }: Data): FunctionReturn => {
-  const errors: Data = <Data>{}
+  const errors: Data = {} as Data
 
   email = !isEmpty(email) ? email : ''
   username = !isEmpty(username) ? username : ''

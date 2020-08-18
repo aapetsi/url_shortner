@@ -45,7 +45,7 @@ describe('Test registering a user', () => {
 
   test('should successfully create a new user', async () => {
     const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123456'})
-    
+
     expect(res.status).toBe(201)
     expect(res.body.user._id).toBeDefined()
     expect(res.body.user.email).toBeDefined()
@@ -61,7 +61,7 @@ describe('Test registering a user', () => {
     })
     await newUser.save()
     const res = await request(server).post(api).send({username: 'johndoe', email: 'johndoe@gmail.com', password: '123456', password2: '123456'})
-    
+
     expect(res.status).toBe(400)
     expect(res.body.message).toBe('User already exists')
   })

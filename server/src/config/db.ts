@@ -17,9 +17,9 @@ const {MONGO_DB, MONGO_DB_TEST, MONGO_HOSTNAME, MONGO_PORT} : MongoVariables = p
 
 const connectDB = async () => {
   try {
-    let db = process.env.NODE_ENV === 'development' ? MONGO_DB : MONGO_DB_TEST
+    const db = process.env.NODE_ENV === 'development' ? MONGO_DB : MONGO_DB_TEST
     const dbConnectionUrl = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${db}`
-    
+
     await mongoose.connect(dbConnectionUrl, {
       useNewUrlParser: true,
       useCreateIndex: true,

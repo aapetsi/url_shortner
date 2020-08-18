@@ -11,7 +11,7 @@ const clearDB = async () => {
 beforeAll(async () => {
   try {
     await clearDB()
-    
+
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
@@ -19,7 +19,12 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
-  await request(server).post('/api/auth/register').send({email: 'johndoe@gmail.com', username: 'johndoe', password: '123456', password2: '123456'})
+  await request(server).post('/api/auth/register').send({
+    email: 'johndoe@gmail.com',
+    username: 'johndoe',
+    password: '123456',
+    password2: '123456'
+  })
 })
 
 afterAll(async () => {
@@ -33,22 +38,31 @@ afterAll(async () => {
 
 describe('Test user login', () => {
   test('should return user not found', async () => {
-    const res = await request(server).post(api).send({email: 'joy@gmail.com', password: 'abc1234'})
-    
+    const res = await request(server).post(api).send({
+      email: 'joy@gmail.com',
+      password: 'abc1234'
+    })
+
     expect(res.status).toBe(404)
     expect(res.body.message).toBe('User not found')
   })
 
   test('should return invalid credentials', async () => {
-    const res = await request(server).post(api).send({email: 'johndoe@gmail.com', password: '12345'})
+    const res = await request(server).post(api).send({
+      email: 'johndoe@gmail.com',
+      password: '12345'
+    })
 
     expect(res.status).toBe(401)
     expect(res.body.message).toBe('Invalid credentials')
   })
-  
+
   test('should return success on login', async () => {
-    const res = await request(server).post(api).send({email: 'johndoe@gmail.com', password: '123456'})
-    
+    const res = await request(server).post(api).send({
+      email: 'johndoe@gmail.com',
+      password: '123456'
+    })
+
     expect(res.status).toBe(200)
     expect(res.body.token).toBeDefined()
     expect(res.body.user._id).toBeDefined()

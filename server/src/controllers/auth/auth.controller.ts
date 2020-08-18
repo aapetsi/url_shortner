@@ -10,18 +10,18 @@ export const login = async (req: Request, res: Response) => {
   const {errors, isValid} = validateLoginInput({email, password})
 
   if (!isValid) return res.status(400).json(errors)
-  
+
   try {
     const user = await User.findOne({ email })
-    
+
     if (!user) return res.status(404).json({message: 'User not found'})
-    
+
     if (bcrypt.compareSync(password, user.password)) {
       const token = generateToken(user)
       return res.status(200).json({
         user: {
-          _id: user._id, 
-          email: user.email, 
+          _id: user._id,
+          email: user.email,
           username: user.username,
         },
         token
@@ -39,7 +39,7 @@ export const register = async (req: Request, res: Response) => {
   const {errors, isValid} = validateRegisterInput({ email, username, password, password2 })
 
   if (!isValid) return res.status(400).json(errors)
-  
+
   try {
     const foundUser = await User.findOne({ email })
     if (foundUser) {
@@ -53,17 +53,17 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(newUser.password, salt);
-    
+
     newUser.password = hash
-    
+
     const savedUser = await newUser.save()
 
     const token = generateToken(newUser)
 
     return res.status(201).json({
       user: {
-        _id: savedUser._id, 
-        email: savedUser.email, 
+        _id: savedUser._id,
+        email: savedUser.email,
         username: savedUser.username
       },
       token
