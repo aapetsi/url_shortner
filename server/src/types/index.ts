@@ -1,5 +1,5 @@
-import {Document, Model} from 'mongoose'
-import {Request} from 'express'
+import { Document, Model } from 'mongoose'
+import { Request } from 'express'
 
 export interface MongoVariables {
   MONGO_HOSTNAME : string

@@ -5,8 +5,7 @@ import { IRequest } from 'src/types'
 declare var process : {
   env: {
     JWT_SECRET: string
-  },
-  exit : (val : number) => any
+  }
 }
 
 export default (req: IRequest, res: Response, next: NextFunction) => {

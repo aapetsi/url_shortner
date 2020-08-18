@@ -1,5 +1,6 @@
 import express from 'express'
 import { getUrls, createShortLink, deleteLink, deleteAll } from '../../controllers/url/url.controller'
+
 const router = express.Router()
 
 // @route POST api/url/createShortLink
