@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import {MongoVariables} from '../types'
+import { MongoVariables } from '../types'
 
 dotenv.config()
 
@@ -20,10 +20,9 @@ const {MONGO_DB, MONGO_DB_TEST, MONGO_HOSTNAME, MONGO_PORT} : MongoVariables = p
 const connectDB = async () => {
   try {
     let db = process.env.NODE_ENV === 'development' ? MONGO_DB : MONGO_DB_TEST
-    const dbConnectionUrl = {
-      localUrl: `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${db}`,
-    }
-    await mongoose.connect(dbConnectionUrl.localUrl, {
+    const dbConnectionUrl = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${db}`
+    
+    await mongoose.connect(dbConnectionUrl, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: true,
