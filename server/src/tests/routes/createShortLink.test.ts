@@ -1,22 +1,37 @@
 import request from 'supertest'
 import Url from '../../models/Url.model'
 import server from '../../server'
+import {ITokenData} from '../../types'
+import User from '../../models/User.model'
 
 const api = '/api/url/createShortLink'
+const registerApi = '/api/auth/register'
+
+let token: ITokenData
+
 const clearDB = async () => {
   await Url.deleteMany({})
+  await User.deleteMany({})
 }
 
 beforeAll(async () => {
   try {
     await clearDB()
+    const res = await request(server).post(registerApi).send({
+      username: 'johndoe', 
+      email: 'johndoe@gmail.com', 
+      password: '123456', 
+      password2: '123456'
+    })
+    
+    token = res.body.token
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
   }
 })
 
-afterEach(async () => {
+afterAll(async () => {
   try {
     await clearDB()
   } catch (error) {
@@ -30,6 +45,7 @@ describe('Test creating a short link', () => {
     const res = await request(server)
       .post(api)
       .send({ originalUrl: 'https://google.com' })
+      .set('Authorization', token.token)
 
     expect(res.status).toBe(201)
     expect(res.body).toBeDefined()
@@ -44,7 +60,7 @@ describe('Test creating a short link', () => {
     })
     const res = await request(server).post(api).send({
       originalUrl: 'https://google.com',
-    })
+    }).set('Authorization', token.token)
 
     expect(res.status).toBe(400)
     expect(res.body.error).toBe('Url has already been saved')

@@ -25,6 +25,15 @@ afterEach(async () => {
   }
 })
 
+afterAll(async () => {
+  try {
+    await clearDB()
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.error(error.name, error.message)
+  }
+})
+
 describe('Test registering a user', () => {
   test('should return errors with empty fields', async () => {
     const res = await request(server).post(api).send({})
