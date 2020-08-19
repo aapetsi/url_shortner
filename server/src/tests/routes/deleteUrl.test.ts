@@ -1,17 +1,12 @@
 import request from 'supertest'
 import server from'../../server'
 import Url from'../../models/Url.model'
-import User from '../../models/User.model'
 import { ITokenData } from 'src/types'
+import clearDB from '../../helpers/clearDB'
 
 let id : string
 let token: ITokenData
 const registerApi = '/api/auth/register'
-
-const clearDB = async () => {
-  await Url.deleteMany({})
-  await User.deleteMany({})
-}
 
 beforeAll(async () => {
   try {
@@ -53,7 +48,9 @@ describe('Test delete a url from database', () => {
   })
 
   test('should case a server error with wrong id', async () => {
-    const res = await request(server).delete('/api/url/one/someid').set('Authorization', token.token)
+    const res = await request(server)
+      .delete('/api/url/one/someid')
+      .set('Authorization', token.token)
 
     expect(res.status).toBe(500)
     expect(res.body.message).toBeDefined()

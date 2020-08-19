@@ -1,16 +1,11 @@
 import request from 'supertest'
 import server from'../../server'
 import Url from'../../models/Url.model'
-import User from '../../models/User.model'
 import { ITokenData } from 'src/types'
+import clearDB from '../../helpers/clearDB'
 
 let token: ITokenData
 const registerApi = '/api/auth/register'
-
-const clearDB = async () => {
-  await Url.deleteMany({})
-  await User.deleteMany({})
-}
 
 beforeAll(async () => {
   try {

@@ -1,18 +1,13 @@
 import request from 'supertest'
-import Url from '../../models/Url.model'
 import server from '../../server'
 import { ITokenData } from '../../types'
-import User from '../../models/User.model'
+import clearDB from '../../helpers/clearDB'
+import Url from '../../models/Url.model'
 
 const api = '/api/url/createShortLink'
 const registerApi = '/api/auth/register'
 
 let token: ITokenData
-
-const clearDB = async () => {
-  await Url.deleteMany({})
-  await User.deleteMany({})
-}
 
 beforeAll(async () => {
   try {

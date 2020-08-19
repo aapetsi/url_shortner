@@ -1,12 +1,9 @@
 import request from 'supertest'
-import User from '../../models/User.model'
 import server from '../../server'
+import clearDB from '../../helpers/clearDB'
+
 
 const api = '/api/auth/login'
-
-const clearDB = async () => {
-  await User.deleteMany({})
-}
 
 beforeAll(async () => {
   try {
