@@ -24,8 +24,16 @@ export interface DataStoredInToken {
 
 // export interface IRequest extends IDecodedToken, Request {}
 
-export interface RequestWithUser extends Request {
-  user: IUser
+// export interface RequestWithUser extends Request {
+//   user: IUser
+// }
+
+declare global {
+  namespace Express {
+    export interface Request {
+      user: IUser
+    }
+  }
 }
 
 export interface IUser {

@@ -1,4 +1,4 @@
-import {Response, NextFunction} from 'express'
+import {Request, Response, NextFunction} from 'express'
 import jwt from 'jsonwebtoken'
 import User from '../models/User.model'
 import * as Types from 'src/types'
@@ -9,7 +9,7 @@ declare var process : {
   }
 }
 
-const authenticateMiddleware =  async (req: Types.RequestWithUser, res: Response, next: NextFunction) => {
+const authenticateMiddleware =  async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization
   if (token) {
     const secret = process.env.JWT_SECRET
