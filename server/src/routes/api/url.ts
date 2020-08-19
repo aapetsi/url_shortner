@@ -7,7 +7,7 @@ const router = express.Router()
 // @route POST api/url/createShortLink
 // @desc Shorten a url
 // @access Public
-router.post('/createShortLink', authenticateMiddleware, createShortLink)
+router.post('/createShortLink', createShortLink)
 
 // @route GET api/url/get_urls
 // @desc Get shortened urls

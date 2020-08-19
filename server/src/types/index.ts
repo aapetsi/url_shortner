@@ -13,9 +13,9 @@ export interface ITokenData {
   expiresIn: number;
 }
 
-export interface IDecodedToken {
-  decodedToken: DataStoredInToken
-}
+// export interface IDecodedToken {
+//   decodedToken: DataStoredInToken
+// }
 
 export interface DataStoredInToken {
   id: string,

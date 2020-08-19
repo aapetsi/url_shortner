@@ -9,7 +9,7 @@ const getUrls = async (req: Request, res: Response) => {
   return res.status(200).json(urls)
 }
 
-const createShortLink = async (req: Types.RequestWithUser, res: Response) => {
+const createShortLink = async (req: Request, res: Response) => {
   const { originalUrl } = req.body
 
   if (!originalUrl) {
