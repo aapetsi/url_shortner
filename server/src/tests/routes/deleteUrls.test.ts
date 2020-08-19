@@ -1,10 +1,15 @@
 import request from 'supertest'
 import server from'../../server'
 import Url from'../../models/Url.model'
+import User from '../../models/User.model'
+import { ITokenData } from 'src/types'
 
+let token: ITokenData
+const registerApi = '/api/auth/register'
 
 const clearDB = async () => {
   await Url.deleteMany({})
+  await User.deleteMany({})
 }
 
 beforeAll(async () => {
@@ -25,15 +30,15 @@ beforeAll(async () => {
     urls.forEach((url) => {
       Url.create(url)
     })
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.error(error.name, error.message)
-  }
-})
 
-afterEach(async () => {
-  try {
-    await clearDB()
+    const res = await request(server).post(registerApi).send({
+      username: 'johndoe',
+      email: 'johndoe@gmail.com',
+      password: '123456',
+      password2: '123456'
+    })
+
+    token = res.body.token
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
@@ -42,7 +47,7 @@ afterEach(async () => {
 
 describe('Test delete all from database', () => {
   test('should successfully delete all urls', async () => {
-    const res = await request(server).delete('/api/url/all')
+    const res = await request(server).delete('/api/url/all').set('Authorization', token.token)
 
     expect(res.status).toBe(200)
     expect(res.body.message).toBe('Urls have been deleted')
