@@ -12,16 +12,16 @@ router.post('/createShortLink', authenticateMiddleware, createShortLink)
 // @route GET api/url/get_urls
 // @desc Get shortened urls
 // @access Public
-router.get('/get_urls', getUrls)
+router.get('/get_urls', authenticateMiddleware, getUrls)
 
 // @route DELETE api/url/one/:id
 // @desc Delete one url
 // @access Public
-router.delete('/one/:id', deleteLink)
+router.delete('/one/:id', authenticateMiddleware, deleteLink)
 
 // @route DELETE api/url/all
 // @desc Delete all urls
 // @access Public
-router.delete('/all', deleteAll)
+router.delete('/all', authenticateMiddleware, deleteAll)
 
 export default router

@@ -13,20 +13,10 @@ export interface ITokenData {
   expiresIn: number;
 }
 
-// export interface IDecodedToken {
-//   decodedToken: DataStoredInToken
-// }
-
 export interface DataStoredInToken {
   id: string,
   username: string
 }
-
-// export interface IRequest extends IDecodedToken, Request {}
-
-// export interface RequestWithUser extends Request {
-//   user: IUser
-// }
 
 declare global {
   namespace Express {
