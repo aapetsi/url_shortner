@@ -1,6 +1,7 @@
-import {Request, Response, NextFunction} from 'express'
+import {Response, NextFunction} from 'express'
 import jwt from 'jsonwebtoken'
-import { IRequest } from 'src/types'
+import User from '../models/User.model'
+import * as Types from 'src/types'
 
 declare var process : {
   env: {
@@ -8,18 +9,25 @@ declare var process : {
   }
 }
 
-export default (req: IRequest, res: Response, next: NextFunction) => {
+const authenticateMiddleware =  async (req: Types.RequestWithUser, res: Response, next: NextFunction) => {
   const token = req.headers.authorization
-
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken: any) => {
-      if (err) {
-        res.status(401).json({message: err.message})
+    const secret = process.env.JWT_SECRET
+    try {
+      const verificationResoponse = jwt.verify(token, secret) as Types.DataStoredInToken
+      const user = await User.findById(verificationResoponse.id)
+      if (user) {
+        req.user = user
+        next()
       } else {
-        req.decodedToken = decodedToken
+        return res.status(400).json({message: 'No credentials provided'})
       }
-    })
+    } catch (error) {
+      return res.status(401).json({message: error.message})
+    }
   } else {
-    res.status(400).json({message: 'No credentials provided'})
+    return res.status(400).json({message: 'No credentials provided'})
   }
 }
+
+export default authenticateMiddleware

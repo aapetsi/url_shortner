@@ -8,14 +8,25 @@ export interface MongoVariables {
   MONGO_PORT: number
 }
 
-export interface IDecodedToken {
-  decodedToken: {
-    sub: string,
-    username: string
-  }
+export interface ITokenData {
+  token: string;
+  expiresIn: number;
 }
 
-export interface IRequest extends IDecodedToken, Request {}
+export interface IDecodedToken {
+  decodedToken: DataStoredInToken
+}
+
+export interface DataStoredInToken {
+  id: string,
+  username: string
+}
+
+// export interface IRequest extends IDecodedToken, Request {}
+
+export interface RequestWithUser extends Request {
+  user: IUser
+}
 
 export interface IUser {
   username: string,

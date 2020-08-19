@@ -2,13 +2,14 @@ import Url from '../../models/Url.model'
 import { Request, Response } from 'express'
 import {v4 as uuidv4} from 'uuid'
 import verifyUrl from '../../helpers/verifyUrl'
+import * as Types from 'src/types'
 
 const getUrls = async (req: Request, res: Response) => {
   const urls = await Url.find()
   return res.status(200).json(urls)
 }
 
-const createShortLink = async (req: Request, res: Response) => {
+const createShortLink = async (req: Types.RequestWithUser, res: Response) => {
   const { originalUrl } = req.body
 
   if (!originalUrl) {
