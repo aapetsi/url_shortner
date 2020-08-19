@@ -19,8 +19,6 @@ const authenticateMiddleware =  async (req: Request, res: Response, next: NextFu
       if (user) {
         req.user = user
         next()
-      } else {
-        return res.status(400).json({message: 'No credentials provided'})
       }
     } catch (error) {
       return res.status(401).json({message: error.message})
