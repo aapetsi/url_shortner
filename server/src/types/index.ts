@@ -10,7 +10,7 @@ export interface MongoVariables {
 
 export interface ITokenData {
   token: string;
-  expiresIn: number;
+  expiresIn: string;
 }
 
 export interface DataStoredInToken {

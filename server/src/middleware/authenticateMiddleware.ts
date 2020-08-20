@@ -11,6 +11,7 @@ declare var process : {
 
 const authenticateMiddleware =  async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization
+  
   if (token) {
     const secret = process.env.JWT_SECRET
     try {

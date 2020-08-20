@@ -13,6 +13,7 @@ import UrlList from '@/components/UrlList.vue'
 import UrlForm from '@/components/UrlForm.vue'
 import { UrlsType } from '@/types'
 import Axios from 'axios'
+import AxiosAuth from './utils/AxiosAuth'
 
 export default Vue.extend({
   name: 'App' as string,
@@ -27,7 +28,7 @@ export default Vue.extend({
   methods: {
     async shortenUrl(originalUrl : string) : Promise<void> {
       try {
-        const res = await Axios.post('http://localhost:3000/api/url/createShortLink', { originalUrl })
+        const res = await AxiosAuth().post('http://localhost:3000/api/url/createShortLink', { originalUrl })
         this.urls = [...this.urls, res.data]
         this.error = ''
       } catch (error) {
@@ -62,8 +63,9 @@ export default Vue.extend({
   },
   async mounted() {
     try {
-      const res = await Axios.get('http://localhost:3000/api/url/get_urls')
-
+      // const res = await Axios.get('http://localhost:3000/api/url/get_urls')
+      const res = await AxiosAuth().get('http://localhost:3000/api/url/get_urls')
+      console.log(res.data.user)
       this.urls = res.data
     } catch (error) {
       this.error = 'Oops there seems to be a problem fetching your saved urls'

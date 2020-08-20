@@ -17,7 +17,7 @@ export default  (user: IUserDocument): ITokenData => {
   }
 
   const options = {
-    expiresIn: 24 * 60 * 60
+    expiresIn: '1d'
   }
 
   const token = jwt.sign(payload, process.env.JWT_SECRET, options)
