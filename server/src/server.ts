@@ -1,6 +1,8 @@
 import express from 'express'
 import path from 'path'
 import cors from 'cors'
+import helmet from 'helmet'
+import morgan from 'morgan'
 import urlRouter from './routes/api/url'
 import authRouter from './routes/api/auth'
 import connectDB from './config/db'
@@ -12,13 +14,19 @@ const app = express()
 // Connect Database
 connectDB()
 
-// app middleware
+// express middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(buildPath))
 
 // cors middleware
 app.use(cors())
+
+// helmet middleware
+app.use(helmet())
+
+// morgan middleware
+app.use(morgan('tiny'))
 
 // Routes middleware
 app.use('/api/url', urlRouter)
