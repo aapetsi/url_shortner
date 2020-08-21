@@ -43,7 +43,7 @@ describe('Test creating a short link', () => {
       originalUrl: 'https://google.com',
       shortUrl: 'https://pbid.io/4d05f000',
       shortUrlHash: '4d05f000',
-      dateCreated: "2020-08-20T10:57:42.932Z"
+      dateCreated: '2020-08-20T10:57:42.932Z'
     })
 
     const res = await request(server)

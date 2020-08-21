@@ -1,4 +1,4 @@
-import request from "supertest"
+import request from 'supertest'
 import server from '../../server'
 import clearDB from '../../helpers/clearDB'
 import Url from 'src/models/Url.model'
@@ -17,7 +17,7 @@ beforeAll(async () => {
     password: '123456',
     password2: '123456'
   })
-  
+
   token = user.body.token
   wrongID = user.body.user._id
 
@@ -29,7 +29,7 @@ beforeAll(async () => {
 describe('Test open link', () => {
   test('should return url not found', async () => {
     const res = await request(server).get(`/api/url/open/${wrongID}`)
-    
+
     expect(res.status).toBe(404)
     expect(res.body.message).toBe('Url not found')
   })
