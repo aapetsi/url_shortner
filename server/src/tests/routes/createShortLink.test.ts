@@ -9,6 +9,15 @@ const registerApi = '/api/auth/register'
 
 let token: ITokenData
 
+const createResponse = async (originalUrl: string, auth: ITokenData) => {
+  const {token} = auth
+  const response = await request(server)
+      .post(api)
+      .send({ originalUrl })
+      .set('Authorization', token)
+  return response
+}
+
 beforeAll(async () => {
   try {
     await clearDB()
@@ -28,10 +37,7 @@ beforeAll(async () => {
 
 describe('Test creating a short link', () => {
   test('should create a shortened url', async () => {
-    const res = await request(server)
-      .post(api)
-      .send({ originalUrl: 'https://google.com' })
-      .set('Authorization', token.token)
+    const res = await createResponse('https://google.com', token)
 
     expect(res.status).toBe(201)
     expect(res.body).toBeDefined()
@@ -46,10 +52,7 @@ describe('Test creating a short link', () => {
       dateCreated: '2020-08-20T10:57:42.932Z'
     })
 
-    const res = await request(server)
-      .post(api)
-      .send({ originalUrl: 'https://google.com' })
-      .set('Authorization', token.token)
+    const res = await createResponse('https://google.com', token)
 
     expect(res.status).toBe(400)
     expect(res.body.error).toBe('Url has already been saved')
@@ -57,10 +60,7 @@ describe('Test creating a short link', () => {
   })
 
   test('should ask for a valid url field', async () => {
-    const res = await request(server)
-      .post(api)
-      .send({ originalUrl: '' })
-      .set('Authorization', token.token)
+    const res = await createResponse('', token)
 
     expect(res.status).toBe(400)
     expect(res.body).toBeDefined()
@@ -68,27 +68,21 @@ describe('Test creating a short link', () => {
   })
 
   test('should return error with invalid url format', async () => {
-    const res = await request(server).post(api).send({originalUrl: 'ww.asd.ff.asdf.f'}).set('Authorization', token.token)
+    const res = await createResponse('ww.asd.ff.asdf.f', token)
 
     expect(res.status).toBe(400)
     expect(res.body.message).toBe('Url is not in a valid format')
   })
 
   test('should return authentication error', async () => {
-    const res = await request(server)
-      .post(api)
-      .send({originalUrl: 'www.google.com'})
-      .set('Authorization', '')
+    const res = await createResponse('www.google.com', {token: '', expiresIn: ''})
 
     expect(res.status).toBe(400)
     expect(res.body.message).toBe('No credentials provided')
   })
 
   test('should return error with wrong token', async () => {
-    const res = await request(server)
-      .post(api)
-      .send({originalUrl: 'www.google.com'})
-      .set('Authorization', 'wrongtoken')
+    const res = await createResponse('www.google.com', {token: 'wrongToken', expiresIn: '1d'})
 
     expect(res.status).toBe(401)
     expect(res.body.message).toBe('jwt malformed')
