@@ -8,11 +8,11 @@ let id : string
 let token: ITokenData
 const registerApi = '/api/auth/register'
 
-const createResponse = async (id: string, token: ITokenData) => {
+const createResponse = async (_id: string, auth: ITokenData) => {
   const response = await request(server)
-    .delete(`/api/url/one/${id}`)
-    .set('Authorization', token.token)
-  
+    .delete(`/api/url/one/${_id}`)
+    .set('Authorization', auth.token)
+
   return response
 }
 
@@ -43,7 +43,7 @@ beforeAll(async () => {
 
 describe('Test delete a url from database', () => {
   test('should successfully delete url', async () => {
-    const res = await createResponse(id, token) 
+    const res = await createResponse(id, token)
 
     expect(res.status).toBe(200)
     expect(res.body.message).toBe('Url has been deleted')

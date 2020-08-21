@@ -10,11 +10,10 @@ const registerApi = '/api/auth/register'
 let token: ITokenData
 
 const createResponse = async (originalUrl: string, auth: ITokenData) => {
-  const {token} = auth
   const response = await request(server)
       .post(api)
       .send({ originalUrl })
-      .set('Authorization', token)
+      .set('Authorization', auth.token)
   return response
 }
 

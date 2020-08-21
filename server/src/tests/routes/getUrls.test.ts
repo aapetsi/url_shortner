@@ -8,8 +8,8 @@ const api = '/api/url/get_urls'
 const registerApi = '/api/auth/register'
 let token: ITokenData
 
-const createResponse = async (token: ITokenData) => {
-  const response = await request(server).get(api).set('Authorization', token.token)
+const createResponse = async (auth: ITokenData) => {
+  const response = await request(server).get(api).set('Authorization', auth.token)
 
   return response
 }
