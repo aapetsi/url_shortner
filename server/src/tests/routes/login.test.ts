@@ -2,8 +2,17 @@ import request from 'supertest'
 import server from '../../server'
 import clearDB from '../../helpers/clearDB'
 
-
+interface Data {
+  email?: string,
+  password?: string
+}
 const api = '/api/auth/login'
+
+const createResponse = async (data: Data) => {
+  const response = await request(server).post(api).send(data)
+
+  return response
+}
 
 beforeAll(async () => {
   try {
@@ -34,7 +43,7 @@ afterAll(async () => {
 
 describe('Test user login', () => {
   test('should return user not found', async () => {
-    const res = await request(server).post(api).send({
+    const res = await createResponse({
       email: 'joy@gmail.com',
       password: 'abc1234'
     })
@@ -44,7 +53,7 @@ describe('Test user login', () => {
   })
 
   test('should return invalid credentials', async () => {
-    const res = await request(server).post(api).send({
+    const res = await createResponse({
       email: 'johndoe@gmail.com',
       password: '12345'
     })
@@ -54,7 +63,7 @@ describe('Test user login', () => {
   })
 
   test('should return success on login', async () => {
-    const res = await request(server).post(api).send({
+    const res = await createResponse({
       email: 'johndoe@gmail.com',
       password: '123456'
     })
@@ -67,7 +76,7 @@ describe('Test user login', () => {
   })
 
   test('should return error for required fields', async () => {
-    const res = await request(server).post(api).send({})
+    const res = await createResponse({})
 
     expect(res.status).toBe(400)
     expect(res.body.email).toBe('Email is required')
