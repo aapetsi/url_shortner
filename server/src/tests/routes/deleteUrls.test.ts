@@ -7,6 +7,7 @@ import clearDB from '../../helpers/clearDB'
 let token: ITokenData
 const registerApi = '/api/auth/register'
 
+
 beforeAll(async () => {
   try {
     await clearDB()
@@ -15,11 +16,13 @@ beforeAll(async () => {
         shortUrlHash: '2nf8dw8r',
         shortUrl: 'https://pbid.io/2nf8dw8r',
         originalUrl: 'https://google.com',
+        dateCreated: '2020-08-20T10:58:01.964Z'
       },
       {
         shortUrlHash: '2nf8dw8a',
         shortUrl: 'https://pbid.io/2nf8dw8a',
         originalUrl: 'https://yahoo.com',
+        dateCreated: '2020-08-20T10:58:01.964Z'
       },
     ]
     urls.forEach((url) => {
