@@ -9,6 +9,21 @@ const getUrls = async (req: Request, res: Response) => {
   return res.status(200).json(urls)
 }
 
+const openLink = async (req: Request, res: Response) => {
+  try {
+    const {id} = req.params
+    const url = await Url.findById(id)
+  
+    if (!url) {
+      return res.status(404).json({message: 'Url not found'})
+    }
+
+    return res.status(200).redirect(url.originalUrl)    
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}
+
 const createShortLink = async (req: Request, res: Response) => {
   const { originalUrl } = req.body
   
@@ -64,4 +79,4 @@ const deleteAll = async (req: Request, res: Response) => {
   }
 }
 
-export { getUrls, createShortLink, deleteLink, deleteAll }
+export { getUrls, createShortLink, deleteLink, deleteAll, openLink }

@@ -33,6 +33,17 @@ export interface IUser {
   date: Date
 }
 
+export interface IUrl {
+  originalUrl: string,
+  shortUrl: string,
+  shortUrlHash: string,
+  dateCreated: Date
+}
+
 export interface IUserDocument extends IUser, Document {}
 
+export interface IUrlDocument extends IUrl, Document {}
+
 export interface IUserModel extends Model<IUserDocument>{}
+
+export interface IUrlModel extends Model<IUrlDocument>{}

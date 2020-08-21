@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUrls, createShortLink, deleteLink, deleteAll } from '../../controllers/url/url.controller'
+import { getUrls, createShortLink, deleteLink, deleteAll, openLink } from '../../controllers/url/url.controller'
 import authenticateMiddleware from '../../middleware/authenticateMiddleware'
 
 const router = express.Router()
@@ -13,6 +13,11 @@ router.post('/createShortLink', authenticateMiddleware, createShortLink)
 // @desc Get shortened urls
 // @access Public
 router.get('/get_urls', authenticateMiddleware, getUrls)
+
+// @route GET api/url/open/:id
+// @desc Get shortened urls
+// @access Public
+router.get('/open/:id', openLink)
 
 // @route DELETE api/url/one/:id
 // @desc Delete one url

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import {IUrlDocument} from 'src/types'
 
 const urlSchema = new mongoose.Schema({
   originalUrl: {
@@ -19,6 +20,6 @@ const urlSchema = new mongoose.Schema({
   },
 })
 
-const url = mongoose.model('url', urlSchema)
+const url = mongoose.model<IUrlDocument>('url', urlSchema)
 
 export default url
