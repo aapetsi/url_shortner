@@ -1,10 +1,10 @@
 <template>
   <div>
     <nav>
-      <a href="/">App</a>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-      <a href="/logout">Logout</a>
+      <router-link to="/">App</router-link>
+      <router-link to="/login">Login</router-link>
+      <router-link to="/register">Register</router-link>
+      <router-link to="/logout">Logout</router-link>
     </nav>
 
     <router-view></router-view>
@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
 
 })
