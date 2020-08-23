@@ -20,7 +20,8 @@ export default Vue.extend({
     username: 'johndoe',
     email: 'johndoe@gmail.com',
     password: '123456',
-    password2: '123456'
+    password2: '123456',
+    error: {}
   }),
   methods: {
     async handleRegister(event: Event) {
