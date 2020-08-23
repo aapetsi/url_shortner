@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <form v-on:submit="handleRegister">
-      <input v-model="username" type="text" required placeholder="username">
-      <input v-model="email" type="email" name="email" required placeholder="email">
-      <input v-model="password" type="password" required placeholder="Password">
-      <input v-model="password2" type="password" required placeholder="Confirm Password">
-      <button type="submit">Register</button>
-    </form>
+  <div id="app-register">
+    <h1>Register</h1>
+    <div>
+      <form v-on:submit="handleRegister">
+        <input v-model="username" type="text" required placeholder="username">
+        <input v-model="email" type="email" name="email" required placeholder="email">
+        <input v-model="password" type="password" required placeholder="Password">
+        <input v-model="password2" type="password" required placeholder="Confirm Password">
+        <button type="submit">Register</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -39,6 +42,45 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
+ #app-register {
+  background: #e3e3e3;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
+form {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 50vh;
+  margin: 0 auto
+}
+
+input {
+  margin: 10px;
+  height: 35px;
+}
+
+button {
+  width: 90px;
+  height: 47px;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+  align-self: center;
+}
 </style>
