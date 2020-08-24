@@ -52,7 +52,7 @@ export default Vue.extend({
         localStorage.setItem('user', JSON.stringify(res.data.user))
         console.log(res.data)
         this.errors = {}
-        this.$router.push('/')
+        this.$router.push('/main')
       } catch (error) {
         this.errors = {...error.response.data}
       }

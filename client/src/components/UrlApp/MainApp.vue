@@ -12,7 +12,6 @@ import Vue from 'vue'
 import UrlList from './UrlList.vue'
 import UrlForm from './UrlForm.vue'
 import { UrlsType } from '@/types'
-import Axios from 'axios'
 import AxiosAuth from '@/utils/AxiosAuth'
 
 export default Vue.extend({

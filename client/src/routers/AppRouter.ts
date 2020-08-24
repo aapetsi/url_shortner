@@ -5,11 +5,11 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '/main',
     component: () => import('@/components/UrlApp/MainApp.vue')
   },
   {
-    path: '/login',
+    path: '/',
     component: () => import('@/components/Login/Login.vue')
   },
   {
