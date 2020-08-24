@@ -41,6 +41,6 @@ nav {
   justify-content: space-between;
   padding: 20px;
   font-size: 18px;
-  width: 45%;
+  width: 30%;
 }
 </style>
