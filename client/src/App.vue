@@ -39,7 +39,8 @@ export default Vue.extend({
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
   font-size: 18px;
+  width: 45%;
 }
 </style>
