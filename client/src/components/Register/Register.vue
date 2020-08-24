@@ -6,12 +6,16 @@
         <input v-model="username" type="text" required placeholder="Username">
         <span class="error-message" v-if="errors.username">{{ errors.username }}</span>
         <span class="error-message" v-if="errors.message">{{ errors.message }}</span>
+
         <input v-model="email" type="email" name="email" required placeholder="Email">
         <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
+
         <input v-model="password" type="password" required placeholder="Password">
         <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
+
         <input v-model="password2" type="password" required placeholder="Confirm Password">
         <span class="error-message" v-if="errors.password2">{{ errors.password2}}</span>
+
         <button type="submit">Register</button>
         <p>Already have an account? Click <router-link to="/login">here</router-link> to login</p>
       </form>
@@ -43,6 +47,7 @@ export default Vue.extend({
           password: this.password, 
           password2: this.password2
         })
+        
         localStorage.setItem('token', res.data.token.token)
         localStorage.setItem('user', JSON.stringify(res.data.user))
         console.log(res.data)

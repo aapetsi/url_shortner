@@ -1,36 +1,120 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <form v-on:submit="handleLogin">
-      <input type="email" placeholder="Email" v-model="email" required>
-      <input type="password" placeholder="Password" v-model="password" required>
-      <button>Login</button>
-    </form>
+  <div id="app-login">
+    <div id="login-form">
+      <form v-on:submit="handleLogin">
+        <h1>Login</h1>
+
+        <input v-model="email" type="email" name="email" required placeholder="Email">
+
+        <input v-model="password" type="password" required placeholder="Password">
+        <span class="error-message" v-if="errors.message">{{ errors.message }}</span>
+
+        <button type="submit">Register</button>
+        <p>Don't have an account yet? Click <router-link to="/register">here</router-link> to register</p>
+      </form>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Axios from 'axios'
+import AxiosNoAuth from '@/utils/AxiosNoAuth'
 
 export default Vue.extend({
-  name: 'Login' as string,
-  components: {},
+  name: 'Register' as string,
   data: () => ({
+    username: 'johndoe',
     email: 'johndoe@gmail.com',
     password: '123456',
-    error: ''
+    password2: '123456',
+    errors: {}
   }),
   methods: {
     async handleLogin(event: Event) {
       event.preventDefault()
-      const res = await Axios.post('http://localhost:3000/api/auth/login', {email: this.email, password: this.password})
-      localStorage.setItem('token', res.data.token.token)
+
+      try {
+        const res = await AxiosNoAuth().post('/auth/login', {
+          email: this.email, 
+          password: this.password, 
+        })
+        
+        localStorage.setItem('token', res.data.token.token)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        console.log(res.data)
+        this.errors = {}
+        this.$router.push('/')
+      } catch (error) {
+        this.errors = {...error.response.data}
+      }
     }
   }
 })
 </script>
 
-<style>
+<style scoped>
+ #app-login {
+  background: #e3e3e3;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
+#login-form {
+  margin-top: 55px;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 55vh;
+  margin: 0 auto;
+  box-shadow: green;
+  -webkit-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  border-radius: 25px;
+}
+
+input {
+  margin: 10px;
+  width: 350px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #e3e3e3;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+  font-size: 18px;
+}
+
+button {
+  width: 90px;
+  height: 47px;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+  align-self: center;
+  margin-top: 60px;
+}
 </style>
