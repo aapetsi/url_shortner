@@ -17,7 +17,7 @@
         <span class="error-message" v-if="errors.password2">{{ errors.password2}}</span>
 
         <button type="submit">Register</button>
-        <p>Already have an account? Click <router-link to="/login">here</router-link> to login</p>
+        <p>Already have an account? Click <router-link to="/">here</router-link> to login</p>
       </form>
     </div>
   </div>
@@ -125,5 +125,20 @@ button {
   margin-left: 10px;
   align-self: center;
   margin-top: 100px;
+}
+
+@media only screen and (max-width: 540px) {
+  form {
+    width: 90%;
+  }
+
+  input {
+    width: 80%;
+    font-size: 12px;
+  }
+
+  p {
+    padding: 20px;
+  }
 }
 </style>
