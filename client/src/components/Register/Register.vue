@@ -3,10 +3,15 @@
     <div id="register-form">
       <form v-on:submit="handleRegister">
         <h1>Register</h1>
-        <input v-model="username" type="text" required placeholder="username">
-        <input v-model="email" type="email" name="email" required placeholder="email">
+        <input v-model="username" type="text" required placeholder="Username">
+        <span class="error-message" v-if="errors.username">{{ errors.username }}</span>
+        <span class="error-message" v-if="errors.message">{{ errors.message }}</span>
+        <input v-model="email" type="email" name="email" required placeholder="Email">
+        <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
         <input v-model="password" type="password" required placeholder="Password">
+        <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
         <input v-model="password2" type="password" required placeholder="Confirm Password">
+        <span class="error-message" v-if="errors.password2">{{ errors.password2}}</span>
         <button type="submit">Register</button>
       </form>
     </div>
@@ -24,19 +29,27 @@ export default Vue.extend({
     email: 'johndoe@gmail.com',
     password: '123456',
     password2: '123456',
-    error: {}
+    errors: {}
   }),
   methods: {
     async handleRegister(event: Event) {
       event.preventDefault()
-      const res = await AxiosNoAuth().post('/auth/register', {
-        username: this.username, 
-        email: this.email, 
-        password: this.password, 
-        password2: this.password2
-      })
 
-      console.log(res.data)
+      try {
+        const res = await AxiosNoAuth().post('/auth/register', {
+          username: this.username, 
+          email: this.email, 
+          password: this.password, 
+          password2: this.password2
+        })
+        localStorage.setItem('token', res.data.token.token)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        console.log(res.data)
+        this.errors = {}
+        this.$router.push('/')
+      } catch (error) {
+        this.errors = {...error.response.data}
+      }
     }
   }
 })
@@ -56,32 +69,40 @@ export default Vue.extend({
 }
 
 #register-form {
-  margin-top: 25px;
+  margin-top: 55px;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
 }
 
 form {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  width: 30%;
-  height: 60vh;
+  width: 500px;
+  height: 80vh;
   margin: 0 auto;
   box-shadow: green;
   -webkit-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  border-radius: 25px;
 }
 
 input {
   margin: 10px;
+  width: 350px;
   height: 35px;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 1px solid #e3e3e3;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
+  align-self: center;
+  font-size: 18px;
 }
 
 button {
@@ -97,5 +118,6 @@ button {
   text-transform: uppercase;
   margin-left: 10px;
   align-self: center;
+  margin-top: 100px;
 }
 </style>
