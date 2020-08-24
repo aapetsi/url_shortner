@@ -23,10 +23,8 @@ import AxiosNoAuth from '@/utils/AxiosNoAuth'
 export default Vue.extend({
   name: 'Register' as string,
   data: () => ({
-    username: 'johndoe',
-    email: 'johndoe@gmail.com',
-    password: '123456',
-    password2: '123456',
+    email: '',
+    password: '',
     errors: {}
   }),
   methods: {
