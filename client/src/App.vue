@@ -4,7 +4,7 @@
       <router-link class="nav-link" to="/main">App</router-link>
       <router-link class="nav-link" to="/">Login</router-link>
       <router-link class="nav-link" to="/register">Register</router-link>
-      <router-link class="nav-link" to="/logout">Logout</router-link>
+      <a class="nav-link" href="#" @click="handleLogout">Logout</a>
     </nav>
 
     <router-view></router-view>
@@ -15,7 +15,15 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'App' as string
+  name: 'App' as string,
+  methods: {
+    async handleLogout(event: Event) {
+      event.preventDefault()
+
+      localStorage.clear()
+      this.$router.push('/')
+    }
+  }
 })
 </script>
 
@@ -34,6 +42,7 @@ export default Vue.extend({
 
 .nav-link {
   color: blue;
+  text-decoration: undeline;
 }
 
 nav {
