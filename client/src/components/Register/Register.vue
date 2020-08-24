@@ -1,8 +1,8 @@
 <template>
   <div id="app-register">
-    <h1>Register</h1>
-    <div>
+    <div id="register-form">
       <form v-on:submit="handleRegister">
+        <h1>Register</h1>
         <input v-model="username" type="text" required placeholder="username">
         <input v-model="email" type="email" name="email" required placeholder="email">
         <input v-model="password" type="password" required placeholder="Password">
@@ -55,18 +55,33 @@ export default Vue.extend({
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#register-form {
+  margin-top: 25px;
+}
+
 form {
-  border: 1px solid red;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  width: 75%;
-  height: 50vh;
-  margin: 0 auto
+  width: 30%;
+  height: 60vh;
+  margin: 0 auto;
+  box-shadow: green;
+  -webkit-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 50px -16px rgba(0,0,0,0.75);
 }
 
 input {
   margin: 10px;
   height: 35px;
+  padding: 5px;
+  border-radius: 2px;
+  border: 1px solid #e3e3e3;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 button {
