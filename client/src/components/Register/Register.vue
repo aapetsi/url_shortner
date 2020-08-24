@@ -13,6 +13,7 @@
         <input v-model="password2" type="password" required placeholder="Confirm Password">
         <span class="error-message" v-if="errors.password2">{{ errors.password2}}</span>
         <button type="submit">Register</button>
+        <p>Already have an account? Click <router-link to="/login">here</router-link> to login</p>
       </form>
     </div>
   </div>
