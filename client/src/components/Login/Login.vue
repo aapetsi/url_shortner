@@ -115,4 +115,19 @@ button {
   align-self: center;
   margin-top: 60px;
 }
+
+@media only screen and (max-width: 540px) {
+  form {
+    width: 90%;
+  }
+
+  input {
+    width: 80%;
+    font-size: 12px;
+  }
+
+  p {
+    padding: 20px;
+  }
+}
 </style>

@@ -52,4 +52,10 @@ nav {
   font-size: 18px;
   width: 30%;
 }
+
+@media only screen and (max-width: 540px) {
+  nav {
+    width: 90%
+  }
+}
 </style>
