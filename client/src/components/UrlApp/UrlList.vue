@@ -52,7 +52,7 @@ export default Vue.extend({
   }
 
   thead {
-    background-color: blue;
+    background-color: #307cf6;
     color: white;
     height: 32px;
   }

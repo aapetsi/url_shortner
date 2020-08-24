@@ -71,7 +71,7 @@ export default Vue.extend({
     box-shadow: none;
     cursor: pointer;
     color: white;
-    background-color: blue;
+    background-color: #307cf6;
     font-weight: bold;
     text-transform: uppercase;
     margin-left: 10px;

@@ -39,7 +39,7 @@ export default Vue.extend({
         
         localStorage.setItem('token', res.data.token.token)
         localStorage.setItem('user', JSON.stringify(res.data.user))
-        console.log(res.data)
+        
         this.errors = {}
         this.$router.push('/main')
       } catch (error) {
@@ -108,7 +108,7 @@ button {
   box-shadow: none;
   cursor: pointer;
   color: white;
-  background-color: blue;
+  background-color: #307cf6;
   font-weight: bold;
   text-transform: uppercase;
   margin-left: 10px;

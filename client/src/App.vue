@@ -55,7 +55,12 @@ nav {
 
 @media only screen and (max-width: 540px) {
   nav {
-    width: 90%
+    width: 90%;
+    background: #307cf6;
+  }
+
+  .nav-link {
+    color: white;
   }
 }
 </style>
