@@ -16,7 +16,7 @@ import Axios from 'axios'
 import AxiosAuth from '@/utils/AxiosAuth'
 
 export default Vue.extend({
-  name: 'App' as string,
+  name: 'MainApp' as string,
   components: {
     UrlForm,
     UrlList
@@ -40,7 +40,7 @@ export default Vue.extend({
       const ans : boolean = confirm('Are you sure you want to delete all urls')
       try {
         if (ans) {
-          const res = await Axios.delete('http://localhost:3000/api/url/all', {data: ''})
+          const res = await AxiosAuth().delete('/url/all', {data: ''})
           alert(res.data.message)
           this.urls = []
         }
@@ -53,7 +53,7 @@ export default Vue.extend({
       try {
         const ans : boolean = confirm('Are you sure want to delete this url')
         if (ans) {
-          await Axios.delete(`http://localhost:3000/api/url/one/${id}`, {data: ''})
+          await AxiosAuth().delete(`/url/one/${id}`, {data: ''})
           this.urls = this.urls.filter(url => url._id !== id)
         }
       } catch (error) {

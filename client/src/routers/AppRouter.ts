@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    component: () => import('@/components/UrlApp/App.vue')
+    component: () => import('@/components/UrlApp/MainApp.vue')
   },
   {
     path: '/login',
