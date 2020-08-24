@@ -57,6 +57,7 @@ nav {
   nav {
     width: 90%;
     background: #307cf6;
+    border-radius: 5px;
   }
 
   .nav-link {
