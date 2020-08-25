@@ -5,7 +5,7 @@ import verifyUrl from '../../helpers/verifyUrl'
 
 const getUrls = async (req: Request, res: Response) => {
   const urls = await Url.find()
-
+  
   return res.status(200).json(urls)
 }
 
@@ -45,6 +45,7 @@ const createShortLink = async (req: Request, res: Response) => {
         originalUrl,
         shortUrl: `https://pbid.io/${hash}`,
         shortUrlHash: hash,
+        user: req.user.id
       })
 
       const savedLink = await shortenedLink.save()

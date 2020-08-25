@@ -1,4 +1,4 @@
-import { Document, Model } from 'mongoose'
+import mongoose, { Document, Model } from 'mongoose'
 import { Request } from 'express'
 
 export interface MongoVariables {
@@ -27,6 +27,7 @@ declare global {
 }
 
 export interface IUser {
+  id: mongoose.Schema.Types.ObjectId,
   username: string,
   email: string,
   password: string,
@@ -37,6 +38,7 @@ export interface IUrl {
   originalUrl: string,
   shortUrl: string,
   shortUrlHash: string,
+  user: mongoose.Schema.Types.ObjectId,
   dateCreated: Date
 }
 

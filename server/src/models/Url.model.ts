@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 import {IUrlDocument} from 'src/types'
 
 const urlSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  },
   originalUrl: {
     type: String,
     required: true,
