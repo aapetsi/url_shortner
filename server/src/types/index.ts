@@ -14,7 +14,7 @@ export interface ITokenData {
 }
 
 export interface DataStoredInToken {
-  id: string,
+  id: mongoose.Schema.Types.ObjectId,
   username: string
 }
 
@@ -27,7 +27,7 @@ declare global {
 }
 
 export interface IUser {
-  id: mongoose.Schema.Types.ObjectId,
+  _id: mongoose.Schema.Types.ObjectId,
   username: string,
   email: string,
   password: string,
@@ -35,10 +35,10 @@ export interface IUser {
 }
 
 export interface IUrl {
+  user_id: mongoose.Schema.Types.ObjectId,
   originalUrl: string,
   shortUrl: string,
   shortUrlHash: string,
-  user: mongoose.Schema.Types.ObjectId,
   dateCreated: Date
 }
 

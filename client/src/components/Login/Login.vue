@@ -9,7 +9,7 @@
         <input v-model="password" type="password" required placeholder="Password">
         <span class="error-message" v-if="errors.message">{{ errors.message }}</span>
 
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
         <p>Don't have an account yet? Click <router-link to="/register">here</router-link> to register</p>
       </form>
     </div>

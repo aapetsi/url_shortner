@@ -1,10 +1,11 @@
 import mongoose from 'mongoose'
-import {IUrlDocument} from 'src/types'
+import { IUrlDocument } from 'src/types'
 
 const urlSchema = new mongoose.Schema({
-  user: {
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'user',
+    required: true
   },
   originalUrl: {
     type: String,

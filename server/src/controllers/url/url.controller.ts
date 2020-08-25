@@ -4,8 +4,8 @@ import {v4 as uuidv4} from 'uuid'
 import verifyUrl from '../../helpers/verifyUrl'
 
 const getUrls = async (req: Request, res: Response) => {
-  const urls = await Url.find()
-  
+  const urls = await Url.find({user_id: req.user._id})
+
   return res.status(200).json(urls)
 }
 
@@ -41,13 +41,14 @@ const createShortLink = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Url has already been saved' })
     } else {
       const hash = uuidv4().split('-')[4].slice(0, 8)
+      const user_id = req.user._id
+      console.log(req.user._id)
       const shortenedLink = new Url({
+        user_id,
         originalUrl,
         shortUrl: `https://pbid.io/${hash}`,
-        shortUrlHash: hash,
-        user: req.user.id
+        shortUrlHash: hash
       })
-
       const savedLink = await shortenedLink.save()
 
       res.status(201).json(savedLink)
