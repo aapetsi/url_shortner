@@ -6,6 +6,7 @@ import clearDB from '../../helpers/clearDB'
 
 const api = '/api/url/get_urls'
 const registerApi = '/api/auth/register'
+let user
 let token: ITokenData
 
 const createResponse = async (auth: ITokenData) => {
@@ -23,8 +24,9 @@ beforeAll(async () => {
       password: '123456',
       password2: '123456'
     })
-
+    
     token = res.body.token
+    user = res.body.user
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
@@ -45,13 +47,15 @@ describe('Test getting all links from database', () => {
         shortUrlHash: '2nf8dw8r',
         shortUrl: 'https://pbid.io/2nf8dw8r',
         originalUrl: 'https://google.com',
-        dateCreated: '2020-08-20T10:58:01.964Z'
+        dateCreated: '2020-08-20T10:58:01.964Z',
+        user_id: user._id
       },
       {
         shortUrlHash: '2nf8dw8a',
         shortUrl: 'https://pbid.io/2nf8dw8a',
         originalUrl: 'https://yahoo.com',
-        dateCreated: '2020-08-20T10:58:01.964Z'
+        dateCreated: '2020-08-20T10:58:01.964Z',
+        user_id: user._id
       },
     ]
     urls.forEach((url) => {
