@@ -36,7 +36,7 @@ const createShortLink = async (req: Request, res: Response) => {
   }
 
   try {
-    const existingUrl = await Url.findOne({ originalUrl })
+    const existingUrl = await Url.findOne({ originalUrl, user_id: req.user._id })
     if (existingUrl) {
       return res.status(400).json({ error: 'Url has already been saved' })
     } else {

@@ -8,6 +8,7 @@ const api = '/api/url/createShortLink'
 const registerApi = '/api/auth/register'
 
 let token: ITokenData
+let user
 
 const createResponse = async (originalUrl: string, auth: ITokenData) => {
   const response = await request(server)
@@ -27,6 +28,7 @@ beforeAll(async () => {
       password2: '123456'
     })
 
+    user = res.body.user
     token = res.body.token
   } catch (error) {
     // tslint:disable-next-line:no-console
@@ -48,7 +50,8 @@ describe('Test creating a short link', () => {
       originalUrl: 'https://google.com',
       shortUrl: 'https://pbid.io/4d05f000',
       shortUrlHash: '4d05f000',
-      dateCreated: '2020-08-20T10:57:42.932Z'
+      dateCreated: '2020-08-20T10:57:42.932Z',
+      user_id: user._id
     })
 
     const res = await createResponse('https://google.com', token)
