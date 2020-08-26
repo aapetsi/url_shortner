@@ -1,4 +1,4 @@
-import express from 'express'
+import express, {Request, Response} from 'express'
 import path from 'path'
 import cors from 'cors'
 import helmet from 'helmet'
@@ -31,6 +31,10 @@ app.use(morgan('tiny'))
 // Routes middleware
 app.use('/api/url', urlRouter)
 app.use('/api/auth', authRouter)
+
+app.all('*', (req: Request, res: Response) => {
+  res.status(404).json({ message: 'This URL can not be found' })
+})
 
 // send frontend react app
 // app.use((req, res) => {
