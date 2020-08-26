@@ -60,6 +60,7 @@ const createShortLink = async (req: Request, res: Response) => {
 
 const deleteLink = async (req: Request, res: Response) => {
   const { id } = req.params
+  const { _id } = req.user
   try {
     const url = await Url.findById(id)
     if (!url) {
