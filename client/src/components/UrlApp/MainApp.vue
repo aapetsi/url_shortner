@@ -74,7 +74,7 @@ export default Vue.extend({
 
 <style scoped>
   #app {
-    background: #e3e3e3;
+    background: white;
     box-sizing: border-box;
     height: 100vh;
     width: 100%;
