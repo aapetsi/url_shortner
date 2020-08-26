@@ -62,7 +62,6 @@ export default Vue.extend({
   },
   async mounted() {
     try {
-      // const res = await Axios.get('http://localhost:3000/api/url/get_urls')
       const res = await AxiosAuth().get('/url/get_urls')
       
       this.urls = res.data
