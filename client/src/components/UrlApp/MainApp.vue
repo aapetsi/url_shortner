@@ -27,7 +27,7 @@ export default Vue.extend({
   methods: {
     async shortenUrl(originalUrl : string) : Promise<void> {
       try {
-        const res = await AxiosAuth().post('http://localhost:3000/api/url/createShortLink', { originalUrl })
+        const res = await AxiosAuth().post('/url/createShortLink', { originalUrl })
         this.urls = [...this.urls, res.data]
         this.error = ''
       } catch (error) {
