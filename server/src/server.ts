@@ -32,6 +32,7 @@ app.use(morgan('tiny'))
 app.use('/api/url', urlRouter)
 app.use('/api/auth', authRouter)
 
+// catch all wrong routes
 app.all('*', (req: Request, res: Response) => {
   res.status(404).json({ message: 'This URL can not be found' })
 })
