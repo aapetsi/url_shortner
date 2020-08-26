@@ -1,11 +1,16 @@
 import mongoose, { Document, Model } from 'mongoose'
-import { Request } from 'express'
 
 export interface MongoVariables {
   MONGO_HOSTNAME : string
   MONGO_DB: string
   MONGO_DB_TEST: string
   MONGO_PORT: number
+}
+
+export interface UserInfo {
+  _id: mongoose.Schema.Types.ObjectId,
+  username: string,
+  email: string
 }
 
 export interface ITokenData {

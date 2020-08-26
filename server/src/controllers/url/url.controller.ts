@@ -75,7 +75,7 @@ const deleteLink = async (req: Request, res: Response) => {
 
 const deleteAll = async (req: Request, res: Response) => {
   try {
-    await Url.deleteMany({})
+    await Url.deleteMany({user_id: req.user._id})
     return res.status(200).json({message: 'Urls have been deleted'})
   } catch (error) {
     return res.status(500).json({ message: error.message })

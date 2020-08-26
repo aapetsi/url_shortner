@@ -1,12 +1,13 @@
 import request from 'supertest'
 import server from'../../server'
 import Url from'../../models/Url.model'
-import { ITokenData } from 'src/types'
+import { ITokenData, UserInfo } from 'src/types'
 import clearDB from '../../helpers/clearDB'
 
 const api = '/api/url/get_urls'
 const registerApi = '/api/auth/register'
-let user
+
+let user: UserInfo
 let token: ITokenData
 
 const createResponse = async (auth: ITokenData) => {

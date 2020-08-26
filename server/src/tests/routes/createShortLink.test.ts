@@ -1,6 +1,6 @@
 import request from 'supertest'
 import server from '../../server'
-import { ITokenData } from '../../types'
+import { ITokenData, UserInfo } from '../../types'
 import clearDB from '../../helpers/clearDB'
 import Url from '../../models/Url.model'
 
@@ -8,7 +8,7 @@ const api = '/api/url/createShortLink'
 const registerApi = '/api/auth/register'
 
 let token: ITokenData
-let user
+let user: UserInfo
 
 const createResponse = async (originalUrl: string, auth: ITokenData) => {
   const response = await request(server)

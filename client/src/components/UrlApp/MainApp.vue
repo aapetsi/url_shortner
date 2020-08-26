@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>URL Shortener</h1>
+    <h2>URL Shortener</h2>
     <UrlForm v-bind:shortenUrl="shortenUrl" />
     <UrlList v-bind:urls="urls" v-bind:error="error" v-bind:handleDelete="handleDelete" />
     <button v-show="urls.length > 0" class="delete-all" @click="handleDeleteAll" :disabled="urls.length === 0">Delete all</button>
@@ -11,8 +11,8 @@
 import Vue from 'vue'
 import UrlList from './UrlList.vue'
 import UrlForm from './UrlForm.vue'
-import { UrlsType } from '@/types'
-import AxiosAuth from '@/utils/AxiosAuth'
+import { UrlsType } from '../../types'
+import AxiosAuth from '../../utils/AxiosAuth'
 
 export default Vue.extend({
   name: 'MainApp' as string,
