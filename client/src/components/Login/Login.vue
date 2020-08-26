@@ -13,35 +13,34 @@
         <p>Don't have an account yet? Click <router-link to="/register">here</router-link> to register</p>
       </form>
     </div>
+    <button @click="loginUser({email, password})">test</button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions, mapState } from 'vuex'
 import AxiosNoAuth from '@/utils/AxiosNoAuth'
+import { UserState } from '../../types'
 
 export default Vue.extend({
   name: 'Register' as string,
   data: () => ({
     email: '',
     password: '',
-    errors: {}
+  }),
+  computed: mapState({
+    errors: (state: any) => state.user.errors
   }),
   methods: {
+    ...mapActions({
+      loginUser: 'user/login'
+    }),
     async handleLogin(event: Event) {
       event.preventDefault()
 
       try {
-        const res = await AxiosNoAuth().post('/auth/login', {
-          email: this.email, 
-          password: this.password, 
-        })
-        
-        localStorage.setItem('token', res.data.token.token)
-        localStorage.setItem('user', JSON.stringify(res.data.user))
-        
-        this.errors = {}
-        this.$router.push('/main')
+        this.loginUser({email: this.email, password: this.password, router: this.$router})
       } catch (error) {
         this.errors = {...error.response.data}
       }
