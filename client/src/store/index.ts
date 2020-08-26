@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import urls from './modules/urls'
-import user from './modules/users'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -10,7 +10,6 @@ const store = new Vuex.Store({
     urls,
     user
   },
-  strict: DEBUG
 })
 
 export default store

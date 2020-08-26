@@ -1,8 +1,8 @@
-import AxiosAuth from "@/utils/AxiosAuth"
+import AxiosAuth from '@/utils/AxiosAuth'
 
 // initial state
 const state = () => ({
-  urls: []
+  urls: [],
 })
 
 // getters
@@ -18,24 +18,24 @@ const actions = {
   async deleteUrls({ commit }) {
     const res = await AxiosAuth().delete('/url/all')
     commit('deleteUrls')
-  }
+  },
 }
 
 // mutations
 const mutations = {
   setUrls(state, urls) {
-    state.urls = {...state.urls, ...urls}
+    state.urls = { ...state.urls, ...urls }
   },
 
   deleteUrls(state) {
     state.urls = []
-  }
+  },
 }
 
 export default {
   namespaced: true,
   state,
-  getters,
+  // getters,
   actions,
-  mutations
+  mutations,
 }
