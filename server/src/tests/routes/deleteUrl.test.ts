@@ -1,11 +1,13 @@
 import request from 'supertest'
 import server from'../../server'
 import Url from'../../models/Url.model'
-import { ITokenData } from 'src/types'
+import { ITokenData, UserInfo } from 'src/types'
 import clearDB from '../../helpers/clearDB'
 
 let id : string
 let token: ITokenData
+let user: UserInfo
+
 const registerApi = '/api/auth/register'
 
 const createResponse = async (_id: string, auth: ITokenData) => {
@@ -26,15 +28,18 @@ beforeAll(async () => {
       password2: '123456'
     })
 
+    user = res.body.user
+    token = res.body.token
+
     const savedUrl = await Url.create({
       shortUrlHash: '2nf8dw8a',
       shortUrl: 'https://pbid.io/2nf8dw8a',
       originalUrl: 'https://yahoo.com',
-      dateCreated: '2020-08-20T10:58:01.964Z'
+      dateCreated: '2020-08-20T10:58:01.964Z',
+      user_id: user._id
     })
-    id = savedUrl._id
 
-    token = res.body.token
+    id = savedUrl._id
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
