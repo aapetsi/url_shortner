@@ -21,7 +21,6 @@
 import Vue from 'vue'
 import { mapActions, mapState } from 'vuex'
 import AxiosNoAuth from '@/utils/AxiosNoAuth'
-import { UserState } from '../../types'
 
 export default Vue.extend({
   name: 'Register' as string,
