@@ -24,7 +24,7 @@ beforeAll(async () => {
       password: '123456',
       password2: '123456'
     })
-    
+
     token = res.body.token
     user = res.body.user
   } catch (error) {

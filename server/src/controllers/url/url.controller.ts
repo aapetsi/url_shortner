@@ -41,10 +41,10 @@ const createShortLink = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Url has already been saved' })
     } else {
       const hash = uuidv4().split('-')[4].slice(0, 8)
-      const user_id = req.user._id
-      console.log(req.user._id)
+      const userID = req.user._id
+
       const shortenedLink = new Url({
-        user_id,
+        user_id: userID,
         originalUrl,
         shortUrl: `https://pbid.io/${hash}`,
         shortUrlHash: hash
@@ -66,7 +66,7 @@ const deleteLink = async (req: Request, res: Response) => {
     if (!url) {
       return res.status(404).json({message: 'No such url exists'})
     }
-    await Url.deleteOne({ _id: id})
+    await Url.deleteOne({ _id: id, user_id: _id})
     return res.status(200).json({message: 'Url has been deleted'})
   } catch (error) {
     return res.status(500).json({message: error.message})
