@@ -21,7 +21,7 @@ beforeAll(async () => {
 
     user = res.body.user
     token = res.body.token
-    
+
     const urls = [
       {
         shortUrlHash: '2nf8dw8r',
@@ -42,7 +42,7 @@ beforeAll(async () => {
       Url.create(url)
     })
 
-    
+
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.error(error.name, error.message)
