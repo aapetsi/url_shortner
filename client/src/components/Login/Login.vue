@@ -22,7 +22,7 @@ import { mapActions, mapState } from 'vuex'
 import AxiosNoAuth from '@/utils/AxiosNoAuth'
 
 export default Vue.extend({
-  name: 'Register' as string,
+  name: 'Login' as string,
   data: () => ({
     email: '',
     password: '',
