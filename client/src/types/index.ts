@@ -15,5 +15,12 @@ interface Urls {
 __v: number
 }
 
+export interface UserState {
+  user: {},
+  errors: {},
+  token: {},
+  isLoggedIn: boolean,
+}
+
 export type UrlsType = Urls[]
 

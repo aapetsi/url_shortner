@@ -1,4 +1,10 @@
 import AxiosAuth from '@/utils/AxiosAuth'
+import { UserState } from '@/types/'
+
+interface UserPayload {
+  user: Record<string, unknown>,
+  token: Record<string, unknown>
+}
 
 // initial state
 const state = () => ({
@@ -10,7 +16,7 @@ const state = () => ({
 
 // actions
 const actions = {
-  async register({ commit }, payload) {
+  async register({ commit }, payload: Record<string, unknown>): Promise<void>{
     try {
       const { email, username, password, password2, router } = payload
       const res = await AxiosAuth().post('/auth/register', {
@@ -29,7 +35,7 @@ const actions = {
     }
   },
 
-  async login({ commit }, payload) {
+  async login({ commit }, payload: Record<string, unknown>): Promise<void> {
     try {
       const res = await AxiosAuth().post('/auth/login', {
         email: payload.email,
@@ -45,7 +51,7 @@ const actions = {
     }
   },
 
-  logout({ commit }) {
+  logout({ commit }): void {
     commit('setUserLoggedIn', false)
     commit('setUser', { user: {}, token: {} })
     commit('clearErrors')
@@ -55,17 +61,17 @@ const actions = {
 
 // mutations
 const mutations = {
-  setUser(state, payload) {
+  setUser(state: UserState, payload: UserPayload) {
     state.user = payload.user
     state.token = payload.token
   },
-  setUserLoggedIn(state, payload) {
+  setUserLoggedIn(state: UserState, payload: boolean) {
     state.isLoggedIn = payload
   },
-  setErrors(state, payload) {
+  setErrors(state: UserState, payload: Record<string, unknown>) {
     state.errors = payload
   },
-  clearErrors(state) {
+  clearErrors(state: UserState) {
     state.errors = {}
   },
 }
