@@ -2,7 +2,7 @@
   <div>
     <p v-if="urls.length === 0">Start shortening your urls</p>
     <p v-else-if="urls.length > 0">Here are your shortened urls</p>
-    <p v-show="error">{{ error }}</p>
+    <!-- <p v-show="error.message">{{ error.message }}</p> -->
     <table v-show="urls.length != 0">
       <thead>
         <tr>
@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <Url v-for="url in urls" :key="url._id" :shortUrl="url.shortUrl" :id="url._id" :originalUrl="url.originalUrl" :shortUrlHash="url.shortUrlHash" :handleDelete="handleDelete"/>
+        <Url v-for="url in urls" :key="url._id" :shortUrl="url.shortUrl" :id="url._id" :originalUrl="url.originalUrl" :shortUrlHash="url.shortUrlHash"/>
       </tbody>
     </table>
   </div>
@@ -21,27 +21,35 @@
 <script lang="ts">
 import Vue from 'vue'
 import Url from './Url.vue'
+import { mapState } from 'vuex'
 
 export default Vue.extend({
   props: {
-    urls: {
-      type: Array,
-      required: true
-    },
-    error: {
-      type: String,
-      required: true
-    },
-    handleDelete: {
-      type: Function,
-      required: true
-    }
+    // urls: {
+    //   type: Array,
+    //   required: true
+    // },
+    // error: {
+    //   type: String,
+    //   required: true
+    // },
+    // handleDelete: {
+    //   type: Function,
+    //   required: true
+    // }
   },
   components: {
     Url
   },
   name: 'UrlList' as string,
-  data: () => ({})
+  data: () => ({}),
+  computed: mapState({
+    urls: (state: any) => state.urls.urls,
+    // errors: (state: any) => state.urls.errors
+  }),
+  methods: {
+
+  }
 })
 </script>
 

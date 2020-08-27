@@ -10,33 +10,43 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
   props: {
-    shortenUrl: {
-      type: Function,
-      required: true
-    }
+    // shortenUrl: {
+    //   type: Function,
+    //   required: true
+    // }
   },
   name: 'UrlForm' as string,
   data: () =>  ({
     url: '' as string,
-    error: '' as string
+    // error: '' as string
+  }),
+  computed: mapState({
+    error: (state: any) => state.urls.formError
   }),
   methods: {
+    ...mapActions({
+      shortenUrl: 'urls/shortenUrl'
+    }),
     handleSubmit(event : Event) : void {
       event.preventDefault()
 
-      const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
-      const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
+      this.shortenUrl(this.url)
+      this.url = ''
+      // const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
+      // const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
+      // const bareRegex = /[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       
-      if (httpRegex.test(this.url) || wwwRegex.test(this.url)) {
-        this.shortenUrl(this.url)
-        this.url = ''
-        this.error = ''
-      } else {
-        this.error = 'Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"'
-      }
+      // if (httpRegex.test(this.url) || wwwRegex.test(this.url)) {
+      //   this.shortenUrl(this.url)
+      //   this.url = ''
+      //   this.error = ''
+      // } else {
+      //   this.error = 'Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"'
+      // }
     }
   }
 })

@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend ({
   props: {
@@ -30,15 +31,14 @@ export default Vue.extend ({
     shortUrlHash: {
       type: String,
       required: true
-    },
-    handleDelete: {
-      type: Function,
-      required: true
     }
   },
   name: 'Url' as string,
   data: () => ({}),
   methods: {
+    ...mapActions({
+      handleDelete: 'urls/deleteUrl'
+    }),
     handleDeleteUrl() : void {
       this.handleDelete(this.id)
     },
