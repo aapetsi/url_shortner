@@ -1,6 +1,6 @@
 <template>
   <div id="app-nav">
-    <nav>
+    <nav v-show="user.isLoggedIn">
       <router-link v-if="user.isLoggedIn" class="nav-link" to="/main">App</router-link>
       <router-link v-if="!user.isLoggedIn" class="nav-link" to="/">Login</router-link>
       <router-link v-if="!user.isLoggedIn" class="nav-link" to="/register">Register</router-link>
