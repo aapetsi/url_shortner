@@ -54,7 +54,7 @@ export default Vue.extend({
 
 <style scoped>
  #app-register {
-  background: #e3e3e3;
+  background: #fff;
   box-sizing: border-box;
   height: 100vh;
   width: 100%;

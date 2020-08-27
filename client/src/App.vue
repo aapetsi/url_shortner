@@ -13,15 +13,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
   name: 'App' as string,
   methods: {
+    ...mapActions({
+      logout: 'user/logout'
+    }),
     async handleLogout(event: Event) {
       event.preventDefault()
 
-      localStorage.clear()
+      this.logout()
       this.$router.push('/')
     }
   },
