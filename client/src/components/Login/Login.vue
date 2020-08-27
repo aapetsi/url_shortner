@@ -13,7 +13,6 @@
         <p>Don't have an account yet? Click <router-link to="/register">here</router-link> to register</p>
       </form>
     </div>
-    <button @click="loginUser({email, password})">test</button>
   </div>
 </template>
 
@@ -38,11 +37,7 @@ export default Vue.extend({
     async handleLogin(event: Event) {
       event.preventDefault()
 
-      try {
-        this.loginUser({email: this.email, password: this.password, router: this.$router})
-      } catch (error) {
-        this.errors = {...error.response.data}
-      }
+      this.loginUser({email: this.email, password: this.password, router: this.$router})
     }
   }
 })
