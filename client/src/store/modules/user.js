@@ -1,5 +1,4 @@
 import AxiosAuth from '@/utils/AxiosAuth'
-import AxiosNoAuth from '@/utils/AxiosNoAuth'
 
 // initial state
 const state = () => ({
@@ -14,7 +13,7 @@ const actions = {
   async register({ commit }, payload) {
     try {
       const { email, username, password, password2, router } = payload
-      const res = await AxiosNoAuth().post('/auth/register', {
+      const res = await AxiosAuth().post('/auth/register', {
         email,
         username,
         password,
@@ -32,7 +31,7 @@ const actions = {
 
   async login({ commit }, payload) {
     try {
-      const res = await AxiosNoAuth().post('/auth/login', {
+      const res = await AxiosAuth().post('/auth/login', {
         email: payload.email,
         password: payload.password,
       })
@@ -47,7 +46,10 @@ const actions = {
   },
 
   logout({ commit }) {
-    console.log('logout user')
+    commit('setUserLoggedIn', false)
+    commit('setUser', { user: {}, token: {} })
+    commit('clearErrors')
+    localStorage.clear()
   },
 }
 

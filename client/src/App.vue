@@ -1,10 +1,10 @@
 <template>
   <div id="app-nav">
     <nav>
-      <router-link class="nav-link" to="/main">App</router-link>
-      <router-link class="nav-link" to="/">Login</router-link>
-      <router-link class="nav-link" to="/register">Register</router-link>
-      <a class="nav-link" href="#" @click="handleLogout">Logout</a>
+      <router-link v-if="user.isLoggedIn" class="nav-link" to="/main">App</router-link>
+      <router-link v-if="!user.isLoggedIn" class="nav-link" to="/">Login</router-link>
+      <router-link v-if="!user.isLoggedIn" class="nav-link" to="/register">Register</router-link>
+      <a v-if="user.isLoggedIn" class="nav-link" href="#" @click="handleLogout">Logout</a>
     </nav>
 
     <router-view></router-view>
@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
 
 export default Vue.extend({
   name: 'App' as string,
@@ -23,7 +24,10 @@ export default Vue.extend({
       localStorage.clear()
       this.$router.push('/')
     }
-  }
+  },
+  computed: mapState({
+    user: (state: any) => state.user
+  })
 })
 </script>
 

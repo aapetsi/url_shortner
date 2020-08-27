@@ -25,11 +25,10 @@ export default Vue.extend({
   data: () => ({
     urls: [] as UrlsType,
     error: '' as string,
-    username: '' as string | null
   }),
   computed: mapState({
     user: (state: any) => state.user.user,
-    urls: (state: any) => state.urls
+    // urls: (state: any) => state.urls as UrlsType
   }),
   methods: {
     async shortenUrl(originalUrl : string) : Promise<void> {
@@ -60,7 +59,7 @@ export default Vue.extend({
         const ans : boolean = confirm('Are you sure want to delete this url')
         if (ans) {
           await AxiosAuth().delete(`/url/one/${id}`, {data: ''})
-          this.urls = this.urls.filter(url => url._id !== id)
+          this.urls = this.urls.filter((url: any) => url._id !== id)
         }
       } catch (error) {
         this.error = 'There was a problem deleting the url'
