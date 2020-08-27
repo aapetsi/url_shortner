@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h3>Welcome, {{ username }}</h3>
+    <h3>Welcome, {{ user.username }}</h3>
     <h2>URL Shortener</h2>
     <UrlForm v-bind:shortenUrl="shortenUrl" />
     <UrlList v-bind:urls="urls" v-bind:error="error" v-bind:handleDelete="handleDelete" />
@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import UrlList from './UrlList.vue'
 import UrlForm from './UrlForm.vue'
 import { UrlsType } from '../../types'
@@ -26,6 +26,10 @@ export default Vue.extend({
     urls: [] as UrlsType,
     error: '' as string,
     username: '' as string | null
+  }),
+  computed: mapState({
+    user: (state: any) => state.user.user,
+    urls: (state: any) => state.urls
   }),
   methods: {
     async shortenUrl(originalUrl : string) : Promise<void> {
