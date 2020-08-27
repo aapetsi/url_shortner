@@ -11,8 +11,23 @@ const state = () => ({
 
 // actions
 const actions = {
-  register({ commit }, payload) {
-    console.log('register user')
+  async register({ commit }, payload) {
+    try {
+      const { email, username, password, password2, router } = payload
+      const res = await AxiosNoAuth().post('/auth/register', {
+        email,
+        username,
+        password,
+        password2,
+      })
+      commit('setUser', res.data)
+      commit('setUserLoggedIn', true)
+      commit('clearErrors')
+      localStorage.setItem('token', res.data.token.token)
+      router.push('/main')
+    } catch (error) {
+      commit('setErrors', error.response.data)
+    }
   },
 
   async login({ commit }, payload) {

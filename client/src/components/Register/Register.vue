@@ -26,6 +26,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import AxiosNoAuth from '@/utils/AxiosNoAuth'
+import { mapActions, mapState } from 'vuex'
 
 export default Vue.extend({
   name: 'Register' as string,
@@ -34,28 +35,18 @@ export default Vue.extend({
     email: '',
     password: '',
     password2: '',
-    errors: {}
+  }),
+  computed: mapState({
+    errors: (state: any) => state.user.errors
   }),
   methods: {
+    ...mapActions({
+      registerUser: 'user/register'
+    }),
     async handleRegister(event: Event) {
       event.preventDefault()
 
-      try {
-        const res = await AxiosNoAuth().post('/auth/register', {
-          username: this.username, 
-          email: this.email, 
-          password: this.password, 
-          password2: this.password2
-        })
-        
-        localStorage.setItem('token', res.data.token.token)
-        localStorage.setItem('user', JSON.stringify(res.data.user))
-        console.log(res.data)
-        this.errors = {}
-        this.$router.push('/main')
-      } catch (error) {
-        this.errors = {...error.response.data}
-      }
+      this.registerUser({ email: this.email, password: this.password, username: this.username, password2: this.password2, router: this.$router })
     }
   }
 })
