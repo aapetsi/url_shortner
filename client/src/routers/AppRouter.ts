@@ -13,8 +13,6 @@ const ifAuthenticated = (to, from, next) => {
   next('/')
 }
 
-console.log(store.getters['user/isAuthenticated'])
-
 const routes: Array<RouteConfig> = [
   {
     path: '/main',

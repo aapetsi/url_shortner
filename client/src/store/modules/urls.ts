@@ -5,6 +5,7 @@ const state = () => ({
   urls: [],
   errors: {},
   formError: '',
+  saveSuccess: false
 })
 
 // getters
@@ -100,7 +101,7 @@ export const mutations = {
 export default {
   namespaced: true,
   state,
-  // getters,
+  getters,
   actions,
   mutations,
 }
