@@ -14,6 +14,11 @@ const state = () => ({
   isLoggedIn: false,
 })
 
+// getters
+const getters = {
+  isAuthenticated: (state) => !!state.token
+}
+
 // actions
 export const actions = {
   async register({ commit }, payload: Record<string, unknown>): Promise<void>{
@@ -79,6 +84,7 @@ export const mutations = {
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations,
 }

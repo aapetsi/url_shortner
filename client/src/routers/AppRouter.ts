@@ -3,23 +3,46 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import store from '../store'
 
 Vue.use(VueRouter)
+// commit('setUserLoggedIn', true)
+
+/**
+ *@todo Install jwt-decode
+ *@todo Implement fetching and setting user data
+ *@todo Install vuex-persistedstate
+ *@todo Clear session storage when user logouts
+ *@example 
+ plugins: [createPersistedState({
+   storage: window.sessionStorage
+ })]
+ */
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters['user/isAuthenticated']) {
+    store.dispatch('setUserLoggedIn', true)
+    next()
+    return
+  }
+  next('/')
+}
+
+console.log(store.getters['user/isAuthenticated'])
 
 const routes: Array<RouteConfig> = [
   {
     path: '/main',
     component: () => import('@/components/UrlApp/MainApp.vue'),
-    beforeEnter: (to, from, next) => {
-      const token = localStorage.getItem('token')
-      
-      if ((to.name !== 'login') && !store.state.user.isLoggedIn) next({path: '/'})
-      else next()
-    },
+    // beforeEnter: (to, from, next) => {      
+    //   if ((to.name !== 'login') && !store.state.user.isLoggedIn) next({path: '/'})
+    //   else next()
+    // },
+    // beforeEnter: ifAuthenticated,
     name: 'main'
   },
   {
     path: '/',
     component: () => import('@/components/Login/Login.vue'),
-    name: 'login'
+    name: 'login',
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/register',
