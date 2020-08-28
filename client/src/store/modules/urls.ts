@@ -35,6 +35,7 @@ export const actions = {
 
         commit('saveUrl', res.data)
         commit('setFormError', '')
+        commit('setErrors', {})
       } else {
         const errorMessage =
           'Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"'

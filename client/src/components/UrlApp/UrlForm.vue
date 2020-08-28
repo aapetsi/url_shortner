@@ -4,6 +4,7 @@
       <input type="text" required v-model="url" placeholder="Enter your url">
       <button>Shorten</button>
     </form>
+    <p v-show="formError">{{ formError }}</p>
     <p v-show="error">{{ error }}</p>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default Vue.extend({
     // error: '' as string
   }),
   computed: mapState({
-    error: (state: any) => state.urls.formError
+    formError: (state: any) => state.urls.formError,
+    error: (state: any) => state.urls.errors.error
   }),
   methods: {
     ...mapActions({

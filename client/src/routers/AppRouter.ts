@@ -3,18 +3,6 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import store from '../store'
 
 Vue.use(VueRouter)
-// commit('setUserLoggedIn', true)
-
-/**
- *@todo Install jwt-decode
- *@todo Implement fetching and setting user data
- *@todo Install vuex-persistedstate
- *@todo Clear session storage when user logouts
- *@example 
- plugins: [createPersistedState({
-   storage: window.sessionStorage
- })]
- */
 
 const ifAuthenticated = (to, from, next) => {
   if (store.getters['user/isAuthenticated']) {
