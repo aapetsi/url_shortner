@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { Url } from '../components'
+import Url from '@/components/UrlApp/Url.vue'
 
 describe("Url.vue component", () => {
   test('should render the Url component', async () => {

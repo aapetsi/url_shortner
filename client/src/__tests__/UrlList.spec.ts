@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { UrlList } from '../components'
+import UrlList from '@/components/UrlApp/UrlList.vue'
 
 describe('UrlList.vue component', () => {
   test('should render no Urls list', async () => {

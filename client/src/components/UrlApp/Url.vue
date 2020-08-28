@@ -14,7 +14,7 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 
-export default Vue.extend ({
+export default Vue.extend({
   props: {
     shortUrl: {
       type: String,

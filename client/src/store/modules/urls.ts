@@ -11,7 +11,7 @@ const state = () => ({
 const getters = {}
 
 // actions
-const actions = {
+export const actions = {
   async getUrls({ commit }) {
     try {
       const res = await AxiosAuth().get('/url/get_urls')
@@ -70,7 +70,7 @@ const actions = {
 }
 
 // mutations
-const mutations = {
+export const mutations = {
   setUrls(state, urls) {
     state.urls = [...urls]
   },

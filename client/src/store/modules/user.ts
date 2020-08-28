@@ -15,7 +15,7 @@ const state = () => ({
 })
 
 // actions
-const actions = {
+export const actions = {
   async register({ commit }, payload: Record<string, unknown>): Promise<void>{
     try {
       const { email, username, password, password2, router } = payload
@@ -60,7 +60,7 @@ const actions = {
 }
 
 // mutations
-const mutations = {
+export const mutations = {
   setUser(state: UserState, payload: UserPayload) {
     state.user = payload.user
     state.token = payload.token

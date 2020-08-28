@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import { UrlForm } from '../components'
+import UrlForm from '@/components/UrlApp/UrlForm.vue'
 
 describe('UrlForm.vue component', () => {
   test('should render Url form', async () => {
