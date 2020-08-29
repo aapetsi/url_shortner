@@ -27,7 +27,8 @@ export default Vue.extend({
   }),
   computed: mapState({
     formError: (state: any) => state.urls.formError,
-    error: (state: any) => state.urls.errors.error
+    error: (state: any) => state.urls.errors.error,
+    saveSuccess: (state: any) => state.urls.saveSuccess,
   }),
   methods: {
     ...mapActions({
@@ -37,6 +38,10 @@ export default Vue.extend({
       event.preventDefault()
 
       this.shortenUrl(this.url)
+
+      // if (this.saveSuccess) {
+      //   this.url = ''
+      // }
       // this.url = ''
       // const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       // const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i

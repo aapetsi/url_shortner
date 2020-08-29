@@ -7,7 +7,7 @@ const state = (): UrlState => ({
   urls: [],
   errors: {},
   formError: '',
-  saveSuccess: false
+  saveSuccess: true
 })
 
 // getters
@@ -39,10 +39,12 @@ export const actions = {
         commit('saveUrl', res.data)
         commit('setFormError', '')
         commit('setErrors', {})
+        commit('setSaveSuccess', true)
       } else {
         const errorMessage =
           'Make sure your url is of the form "https://somewebsite.com" or "www.somewebsite.com"'
         commit('setFormError', errorMessage)
+        commit('setSaveSuccess', false)
       }
     } catch (error) {
       commit('setErrors', error.response.data)
@@ -98,6 +100,10 @@ export const mutations = {
   setFormError(state: UrlState, payload: string): void {
     state.formError = payload
   },
+
+  setSaveSuccess(state: UrlState, payload: boolean): void {
+    state.saveSuccess = payload
+  }
 }
 
 export default {

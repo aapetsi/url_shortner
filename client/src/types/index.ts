@@ -55,12 +55,13 @@ export interface RegisterPayload {
 }
 
 export interface RootState {
-  
+  urls: UrlState,
+  user: UserState
 }
 
 export interface UrlState {
   urls: UrlsType,
-  errors: any,
+  errors: Errors,
   formError: string,
   saveSuccess: boolean
 }

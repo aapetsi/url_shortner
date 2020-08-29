@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter, { RouteConfig, NavigationGuardNext, Route } from 'vue-router'
 import store from '../store'
 
 Vue.use(VueRouter)
 
-const ifAuthenticated = (to, from, next) => {
+const ifAuthenticated = (to: Route, from: Route, next: NavigationGuardNext) => {
   if (store.getters['user/isAuthenticated']) {
     store.dispatch('setUserLoggedIn', true)
     next()
