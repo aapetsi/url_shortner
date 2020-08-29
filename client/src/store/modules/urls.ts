@@ -1,7 +1,9 @@
 import AxiosAuth from '@/utils/AxiosAuth'
+import { ActionContext } from 'vuex'
+import { UrlState, RootState, Urls, UrlsType, Errors } from '@/types'
 
 // initial state
-const state = () => ({
+const state = (): UrlState => ({
   urls: [],
   errors: {},
   formError: '',
@@ -13,7 +15,7 @@ const getters = {}
 
 // actions
 export const actions = {
-  async getUrls({ commit }) {
+  async getUrls({ commit }: ActionContext<UrlState, RootState>) {
     try {
       const res = await AxiosAuth().get('/url/get_urls')
 
@@ -24,7 +26,7 @@ export const actions = {
     }
   },
 
-  async shortenUrl({ commit }, payload) {
+  async shortenUrl({ commit }: ActionContext<UrlState, RootState>, payload: string) {
     try {
       const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
@@ -47,7 +49,7 @@ export const actions = {
     }
   },
 
-  async deleteUrls({ commit }) {
+  async deleteUrls({ commit }: ActionContext<UrlState, RootState>) {
     try {
       const res = await AxiosAuth().delete('/url/all')
       commit('deleteUrls')
@@ -58,7 +60,7 @@ export const actions = {
     }
   },
 
-  async deleteUrl({ commit }, payload) {
+  async deleteUrl({ commit }: ActionContext<UrlState, RootState>, payload: string) {
     try {
       const res = await AxiosAuth().delete(`/url/one/${payload}`)
 
@@ -73,27 +75,27 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setUrls(state, urls) {
+  setUrls(state: UrlState, urls: UrlsType) {
     state.urls = [...urls]
   },
 
-  saveUrl(state, url) {
+  saveUrl(state: UrlState, url: Urls) {
     state.urls = [...state.urls, url]
   },
 
-  deleteUrl(state, payload) {
+  deleteUrl(state: UrlState, payload: string) {
     state.urls = state.urls.filter((url) => url._id !== payload)
   },
 
-  deleteUrls(state) {
+  deleteUrls(state: UrlState) {
     state.urls = []
   },
 
-  setErrors(state, payload) {
+  setErrors(state: UrlState, payload: Errors) {
     state.errors = payload
   },
 
-  setFormError(state, payload) {
+  setFormError(state: UrlState, payload: string) {
     state.formError = payload
   },
 }

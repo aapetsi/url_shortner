@@ -8,7 +8,7 @@ export interface Url {
   handleDelete: (id: string) => void
 }
 
-interface Urls {
+export interface Urls {
   _id: string,
   originalUrl: string,
   shortUrl: string,
@@ -57,4 +57,13 @@ export interface RegisterPayload {
 export interface RootState {
   
 }
+
+export interface UrlState {
+  urls: UrlsType,
+  errors: any,
+  formError: string,
+  saveSuccess: boolean
+}
+
+
 
