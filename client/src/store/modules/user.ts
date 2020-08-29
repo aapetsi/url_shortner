@@ -1,27 +1,28 @@
 import AxiosAuth from '@/utils/AxiosAuth'
-import { UserState } from '@/types/'
+import { RootState, UserState, User, Token, RegisterPayload, Errors } from '@/types/'
+import { ActionContext } from 'vuex'
 
 interface UserPayload {
-  user: Record<string, unknown>,
-  token: Record<string, unknown>
+  user: User,
+  token: Token
 }
 
 // initial state
-const state = () => ({
-  user: {},
+const state = (): UserState => ({
+  user: {} as User,
   errors: {},
-  token: {},
+  token: {} as Token,
   isLoggedIn: false,
 })
 
 // getters
 const getters = {
-  isAuthenticated: (state) => !!state.token
+  isAuthenticated: (state: UserState) => !!state.token
 }
 
 // actions
 export const actions = {
-  async register({ commit }, payload: Record<string, unknown>): Promise<void>{
+  async register({ commit }: ActionContext<UserState, RootState>, payload: RegisterPayload): Promise<void>{
     try {
       const { email, username, password, password2, router } = payload
       const res = await AxiosAuth().post('/auth/register', {
@@ -40,11 +41,12 @@ export const actions = {
     }
   },
 
-  async login({ commit }, payload: Record<string, unknown>): Promise<void> {
+  async login({ commit }: ActionContext<UserState, RootState>, payload: RegisterPayload): Promise<void> {
     try {
+      const {email, password, router} = payload
       const res = await AxiosAuth().post('/auth/login', {
-        email: payload.email,
-        password: payload.password,
+        email,
+        password,
       })
       commit('setUser', res.data)
       commit('setUserLoggedIn', true)
@@ -56,7 +58,7 @@ export const actions = {
     }
   },
 
-  logout({ commit }): void {
+  logout({ commit }: ActionContext<UserState, RootState>): void {
     commit('setUserLoggedIn', false)
     commit('setUser', { user: {}, token: {} })
     commit('clearErrors')
@@ -73,7 +75,7 @@ export const mutations = {
   setUserLoggedIn(state: UserState, payload: boolean) {
     state.isLoggedIn = payload
   },
-  setErrors(state: UserState, payload: Record<string, unknown>) {
+  setErrors(state: UserState, payload: Errors) {
     state.errors = payload
   },
   clearErrors(state: UserState) {
