@@ -15,7 +15,7 @@ const getters = {}
 
 // actions
 export const actions = {
-  async getUrls({ commit }: ActionContext<UrlState, RootState>) {
+  async getUrls({ commit }: ActionContext<UrlState, RootState>): Promise<void> {
     try {
       const res = await AxiosAuth().get('/url/get_urls')
 
@@ -26,7 +26,7 @@ export const actions = {
     }
   },
 
-  async shortenUrl({ commit }: ActionContext<UrlState, RootState>, payload: string) {
+  async shortenUrl({ commit }: ActionContext<UrlState, RootState>, payload: string): Promise<void> {
     try {
       const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
@@ -49,9 +49,9 @@ export const actions = {
     }
   },
 
-  async deleteUrls({ commit }: ActionContext<UrlState, RootState>) {
+  async deleteUrls({ commit }: ActionContext<UrlState, RootState>): Promise<void> {
     try {
-      const res = await AxiosAuth().delete('/url/all')
+      await AxiosAuth().delete('/url/all')
       commit('deleteUrls')
       commit('setErrors', {})
       alert('All urls have been deleted')
@@ -60,9 +60,9 @@ export const actions = {
     }
   },
 
-  async deleteUrl({ commit }: ActionContext<UrlState, RootState>, payload: string) {
+  async deleteUrl({ commit }: ActionContext<UrlState, RootState>, payload: string): Promise<void> {
     try {
-      const res = await AxiosAuth().delete(`/url/one/${payload}`)
+      await AxiosAuth().delete(`/url/one/${payload}`)
 
       alert('Url has been deleted')
       commit('deleteUrl', payload)
@@ -75,27 +75,27 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setUrls(state: UrlState, urls: UrlsType) {
+  setUrls(state: UrlState, urls: UrlsType): void {
     state.urls = [...urls]
   },
 
-  saveUrl(state: UrlState, url: Urls) {
+  saveUrl(state: UrlState, url: Urls): void {
     state.urls = [...state.urls, url]
   },
 
-  deleteUrl(state: UrlState, payload: string) {
+  deleteUrl(state: UrlState, payload: string): void {
     state.urls = state.urls.filter((url) => url._id !== payload)
   },
 
-  deleteUrls(state: UrlState) {
+  deleteUrls(state: UrlState): void {
     state.urls = []
   },
 
-  setErrors(state: UrlState, payload: Errors) {
+  setErrors(state: UrlState, payload: Errors): void {
     state.errors = payload
   },
 
-  setFormError(state: UrlState, payload: string) {
+  setFormError(state: UrlState, payload: string): void {
     state.formError = payload
   },
 }

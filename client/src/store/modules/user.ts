@@ -17,7 +17,7 @@ const state = (): UserState => ({
 
 // getters
 const getters = {
-  isAuthenticated: (state: UserState) => !!state.token
+  isAuthenticated: (state: UserState): boolean => !!state.token
 }
 
 // actions
@@ -52,7 +52,7 @@ export const actions = {
       commit('setUserLoggedIn', true)
       commit('clearErrors')
       localStorage.setItem('token', res.data.token.token)
-      payload.router.push('/main')
+      router.push('/main')
     } catch (error) {
       commit('setErrors', error.response.data)
     }
@@ -68,17 +68,20 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setUser(state: UserState, payload: UserPayload) {
+  setUser(state: UserState, payload: UserPayload): void {
     state.user = payload.user
     state.token = payload.token
   },
-  setUserLoggedIn(state: UserState, payload: boolean) {
+
+  setUserLoggedIn(state: UserState, payload: boolean): void {
     state.isLoggedIn = payload
   },
-  setErrors(state: UserState, payload: Errors) {
+
+  setErrors(state: UserState, payload: Errors): void {
     state.errors = payload
   },
-  clearErrors(state: UserState) {
+
+  clearErrors(state: UserState): void {
     state.errors = {}
   },
 }
