@@ -42,9 +42,9 @@ export default Vue.extend({
 
       this.shortenUrl(this.url)
 
-      // if (this.saveSuccess) {
-      //   this.url = ''
-      // }
+      if (this.saveSuccess) {
+        this.url = ''
+      }
       // this.url = ''
       // const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       // const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i

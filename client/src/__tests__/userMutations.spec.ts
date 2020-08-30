@@ -1,5 +1,5 @@
 import { mutations } from '../store/modules/user'
-import {UserState} from '../types/'
+import { UserState } from '../types'
 
 const {clearErrors, setErrors, setUser, setUserLoggedIn} = mutations
 
@@ -17,7 +17,7 @@ let state: UserState = {
   isLoggedIn: false
 }
 
-describe('Test mutations', () => {
+describe('Test user mutations', () => {
   test('should set user in state', () => {
     const state: UserState = {
       user: {

@@ -47,6 +47,7 @@ export const actions = {
         commit('setSaveSuccess', false)
       }
     } catch (error) {
+      commit('setSaveSuccess', false)
       commit('setErrors', error.response.data)
     }
   },
