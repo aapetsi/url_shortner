@@ -26,8 +26,11 @@ export default Vue.extend({
     // error: '' as string
   }),
   computed: mapState({
+    // eslint-disable-next-line
     formError: (state: any) => state.urls.formError,
+    // eslint-disable-next-line
     error: (state: any) => state.urls.errors.error,
+    // eslint-disable-next-line
     saveSuccess: (state: any) => state.urls.saveSuccess,
   }),
   methods: {

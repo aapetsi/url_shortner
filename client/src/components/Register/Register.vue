@@ -36,6 +36,7 @@ export default Vue.extend({
     password2: '',
   }),
   computed: mapState({
+    // eslint-disable-next-line
     errors: (state: any) => state.user.errors
   }),
   methods: {
