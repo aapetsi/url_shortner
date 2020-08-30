@@ -27,6 +27,6 @@ module.exports = {
     '<rootDir>/node_modules/(?!@jest/.*)',
   ],
   testURL: 'http://localhost/',
-  // collectCoverage: true,
-  // collectCoverageFrom: ['**/*.{js,vue}', '!**/node_modules/**'],
+  collectCoverage: true,
+  coverageReporters: ['json', 'html'],
 }
