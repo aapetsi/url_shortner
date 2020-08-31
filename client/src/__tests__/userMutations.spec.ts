@@ -32,7 +32,7 @@ describe('Test user mutations', () => {
       },
       isLoggedIn: false
     }
-    const userPayload = {user: {id: 'someid', email: 'johndoe@gmail.com', username: 'johndoe'}, token: {expireIn: '1d', token: 'sometokenstring'}}
+    const userPayload = {user: {_id: 'someid', email: 'johndoe@gmail.com', username: 'johndoe'}, token: {expiresIn: '1d', token: 'sometokenstring'}}
     setUser(state, userPayload)
     
     expect(state.user).toBe(userPayload.user)
@@ -45,7 +45,8 @@ describe('Test user mutations', () => {
   })
   
   test('should set errors', () => {
-    setErrors(state, {username: 'Username is required'})
+    let errorObj: Record<string, any> = {'username': 'Username is required'}
+    setErrors(state, errorObj)
     
     expect(state.errors.username).toBeDefined()
     expect(state.errors.username).toBe('Username is required')

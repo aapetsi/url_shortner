@@ -37,7 +37,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx", 
-    "src/tests/App.spec.js", "src/utils/axiosWithAuth.js", "src/store/modules/urls.ts", "src/store/modules/user.ts"
+    "src/tests/App.spec.js", "src/utils/axiosWithAuth.js", "src/store/modules/urls.ts", "src/store/modules/user.ts", "src/__tests__/userActions.spec.ts"
   ],
   "files": [
     "src/shims-tsx.d.ts",
