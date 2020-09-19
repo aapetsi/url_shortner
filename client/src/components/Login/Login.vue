@@ -19,7 +19,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapActions, mapState } from 'vuex'
-import AxiosNoAuth from '@/utils/AxiosNoAuth'
 
 export default Vue.extend({
   name: 'Login' as string,

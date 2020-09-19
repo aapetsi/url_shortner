@@ -16,7 +16,6 @@ import { mapState, mapActions } from 'vuex'
 import UrlList from './UrlList.vue'
 import UrlForm from './UrlForm.vue'
 import { UrlsType } from '../../types'
-import AxiosAuth from '../../utils/AxiosAuth'
 
 export default Vue.extend({
   name: 'MainApp' as string,

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default Vue.extend({
   props: {
