@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import App from '../components/UrlApp/MainApp.vue'
+import { MainApp as App } from './helper/exports'
 import axios from 'axios'
 
 jest.mock('axios')

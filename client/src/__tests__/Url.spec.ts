@@ -49,12 +49,13 @@ describe("Url.vue component", () => {
         handleDelete
       }
     })
+
     const btn = wrapper.find('.delete-one')
     wrapper.trigger('click')
     
     await btn.trigger('click')
   
-    expect(handleDelete).toHaveBeenCalled()
+    // expect(handleDelete).toHaveBeenCalled()
     expect(handleDelete).toHaveBeenCalledWith('5f2e50a5fc53ec4012fdc0ac')
     expect(handleDelete).toHaveBeenCalledTimes(1)
   })
