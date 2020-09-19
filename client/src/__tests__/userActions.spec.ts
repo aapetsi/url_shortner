@@ -37,6 +37,7 @@ describe('Test user actions', () => {
 
       }
     })
+    
     await actions.login({ commit }, {email: 'johndoe', password: '123456', router: jest.fn()})
   })
 })
