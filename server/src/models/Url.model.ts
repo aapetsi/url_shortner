@@ -1,6 +1,12 @@
 import mongoose from 'mongoose'
+import { IUrlDocument } from 'src/types'
 
 const urlSchema = new mongoose.Schema({
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
+  },
   originalUrl: {
     type: String,
     required: true,
@@ -19,6 +25,6 @@ const urlSchema = new mongoose.Schema({
   },
 })
 
-const url = mongoose.model('url', urlSchema)
+const url = mongoose.model<IUrlDocument>('url', urlSchema)
 
 export default url
