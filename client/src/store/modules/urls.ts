@@ -30,7 +30,7 @@ export const actions = {
     try {
       const httpRegex = /^https?:\/\/[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
       const wwwRegex = /^www\.[a-zA-Z]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i
-
+      
       if (httpRegex.test(payload) || wwwRegex.test(payload)) {
         const res = await AxiosAuth().post('/url/createShortLink', {
           originalUrl: payload,
