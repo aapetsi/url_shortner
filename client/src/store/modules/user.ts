@@ -37,8 +37,6 @@ export const actions = {
       localStorage.setItem('token', res.data.token.token)
       router.push('/main')
     } catch (error) {
-      alert('error')
-      throw Error('error here')
       commit('setErrors', error.response.data)
     }
   },
